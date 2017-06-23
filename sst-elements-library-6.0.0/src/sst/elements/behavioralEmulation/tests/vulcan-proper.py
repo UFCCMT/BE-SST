@@ -71,7 +71,7 @@ Operation( "BGQ-core", "computedt", "vulcan-compute-dt.csv", "polynomial-4",
 Operation( "BGQ-core", "computeSum", "vulcan-compute-sum.csv", "polynomial-3",
            Dawdle( AnyOutput() ))
 Operation( "BGQ-core", "computerk", "vulcan-compute-rk.csv", "polynomial-3",
-           Dawdle( AnyOutput()+0.00000004 ))
+           Dawdle( AnyOutput() ))
 Operation( "BGQ-core", "comminit", "vulcan-compute-comminit.csv", "linear",
            Dawdle( AnyOutput() ))
 Operation( "BGQ-core", "comminitaxis", "vulcan-compute-comminitaxis.csv", "linear",
@@ -88,7 +88,7 @@ Component( "BGQ-network" )
 Attribute( "BGQ-network", "usage", 0.0 )
 
 Operation( "BGQ-network", "transfer", "vulcan-transfer.csv", "linear",
-           Dawdle( AnyOutput() ) )
+           Dawdle( AnyOutput()+0.00000004 ))
 
 Mailbox( "BGQ-network", "transfer", lambda source, target, size, tag: [size],
          OnAll )
