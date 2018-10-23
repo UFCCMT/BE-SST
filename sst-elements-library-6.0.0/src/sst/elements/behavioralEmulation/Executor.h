@@ -24,6 +24,7 @@ public:
     {        
         gid = g;
         pid = p;
+	//std::cout<<"Gid ="<<g<<"\t Pid ="<<p<<"\n";
 	filename = program_file;
 	simulation_handler = s;
         state = h_state;

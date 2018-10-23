@@ -1,4 +1,5 @@
 #include "Routine.h"
+#include <boost/concept_check.hpp>
 #include <iostream>
 
 using namespace SST;
@@ -13,33 +14,45 @@ std::shared_ptr<simEvent> Routine::run()
 
     	event_template = sequence.front();
 
-        if (event_template->provision){  //find(event_template->provision)??
-
-            if (event_template->type == "change"){
+        if (event_template->provision)
+	{  //find(event_template->provision)??
+//	    if(gid==1)
+//	      std::cout<<"type= "<<event_template->type<<"\n";
+            if (event_template->type == "change")
+	    {
                 if(event_template->val_type == "double"){
                     auto ev_temp = std::dynamic_pointer_cast<changeTemplate<double>> (event_template);
                     event = std::make_shared<changeEvent>(ev_temp->attribute, state, ev_temp->value);
                 }
-                else{
+                else
+		{
                     auto ev_temp = std::dynamic_pointer_cast<changeTemplate<Procrastinator*>> (event_template);  
                     event =  std::make_shared<changeEvent>(ev_temp->attribute, state, find(ev_temp->value));
                     } 
                                
             }
-            else if (event_template->type == "timeout"){
+            else if (event_template->type == "timeout")
+	    {
          
-                if(event_template->val_type == "double"){
+                if(event_template->val_type == "double")
+		{
                     auto ev_temp = std::dynamic_pointer_cast<timeoutTemplate<double>> (event_template);
                     event = std::make_shared<timeoutEvent>(ev_temp->value);
                 }
-                else{
+                else
+		{
+		  
                     auto ev_temp = std::dynamic_pointer_cast<timeoutTemplate<Procrastinator*>> (event_template);
-                    event = std::make_shared<timeoutEvent>(find(ev_temp->value));
+		    //std::cout<<"value ="<<ev_temp->value<<"\t type ="<<ev_temp->type<<"\n";
+		    event = std::make_shared<timeoutEvent>(find(ev_temp->value));
+		    //if(gid==1)
+		    //std::cout<<"after return ="<<event->value<<"\n";
 //if(gid==3) std::cout<<"value is "<<find(ev_temp->value)<<"\n";
                 }    
                   
             }
-            else if (event_template->type == "condition"){
+            else if (event_template->type == "condition")
+	    {
 
                 if(event_template->val_type == "double"){
                     auto ev_temp = std::dynamic_pointer_cast<conditionTemplate<double>> (event_template);
@@ -51,42 +64,51 @@ std::shared_ptr<simEvent> Routine::run()
                 }          
                 
             }
-            else if (event_template->type == "communicate"){
+            else if (event_template->type == "communicate")
+	    {
 
                 auto ev_temp = std::dynamic_pointer_cast<communicateTemplate> (event_template);
+		//std::cout<<"communicate event -> \n";
+		//std::cout<<ev_temp->target;
+		//std::cout<<"End of communicate event \n";
                 event = std::make_shared<commEvent>(ev_temp->pid, ev_temp->source, ev_temp->size, ev_temp->target, ev_temp->tag,  
                                                     ev_temp->tarlist, ev_temp->locations, ev_temp->next_hop, ev_temp->comm_type);
                 event->type = "communicate";      
                 
             }
-            else if (event_template->type == "call"){
+            else if (event_template->type == "call")
+	    {
 
                 auto ev_temp = std::dynamic_pointer_cast<callTemplate> (event_template);
                 event = std::make_shared<callEvent>(ev_temp->source_gid, ev_temp->source_pid, ev_temp->target_gid, ev_temp->target_family, ev_temp->operation, ev_temp->inputs, 
                                                                  ev_temp->call_type);        
                 
             }  
-            else if (event_template->type == "acknowledge"){
+            else if (event_template->type == "acknowledge")
+	    {
 
                 auto ev_temp = std::dynamic_pointer_cast<ackTemplate> (event_template);
                 event = std::make_shared<ackEvent>(ev_temp->pid, ev_temp->locations, ev_temp->next_hop);       
                 
             }  
-            else if (event_template->type == "wait"){
+            else if (event_template->type == "wait")
+	    {
 
                 auto ev_temp = std::dynamic_pointer_cast<waitTemplate> (event_template);
                 event = std::make_shared<waitEvent>();        
                 
             }
 
-            else if (event_template->type == "receive"){
+            else if (event_template->type == "receive")
+	    {
 
                 auto ev_temp = std::dynamic_pointer_cast<recvTemplate> (event_template);
                 event = std::make_shared<recvEvent>();        
                 
             } 
 
-            else if (event_template->type == "receivewait"){
+            else if (event_template->type == "receivewait")
+	    {
 
                 auto ev_temp = std::dynamic_pointer_cast<recvWaitTemplate> (event_template);
                 event = std::make_shared<recvWaitEvent>();        
@@ -109,7 +131,8 @@ std::shared_ptr<simEvent> Routine::run()
 }
 
 
-double Routine::find(Procrastinator* v){
+double Routine::find(Procrastinator* v)
+{
 
     double value = 0.0;
 
@@ -125,9 +148,13 @@ double Routine::find(Procrastinator* v){
         outputProcrastinator* p = dynamic_cast<outputProcrastinator*>(v);
         value = p->call(state, input, output);
     }
-    else if(v->type == "random"){
+    else if(v->type == "random")
+    {
+
         randomProcrastinator* p = dynamic_cast<randomProcrastinator*>(v);
         value = p->call(state, input, output);
+	//if(gid==1) std::cout<<"value ="<<value<<"\n";
+	//std::cout<<"value = "<<value<<"\n";
     }
     else value = v->call(state, input, output);
  

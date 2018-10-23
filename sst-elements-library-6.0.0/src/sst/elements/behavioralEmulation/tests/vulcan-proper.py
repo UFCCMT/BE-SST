@@ -2,7 +2,9 @@ from cartesianrank import CartesianGrid
 
 global cartesianData
 
-cartesianData = CartesianGrid(32, 32, 32)
+#import pdb
+#pdb.set_trace()
+cartesianData = CartesianGrid(4,3,3)
 
 Component( "BGQ-core" )
 Program( "BGQ-core", "cmt-bone-be.txt" )
@@ -54,7 +56,7 @@ Ordinal( "BGQ-core", "mpi.commRank" )
 
 Relation( "BGQ-core", "BGQ-core", "cpu", "self" )
 
-Attribute( "BGQ-core", "usage", 0.0 )
+Attribute( "BGQ-core", "usage", 4.0 )
  
 Operation( "BGQ-core", "wait", NoLookup, None,
            RecvWait(True))
@@ -71,7 +73,7 @@ Operation( "BGQ-core", "computedt", "vulcan-compute-dt.csv", "polynomial-4",
 Operation( "BGQ-core", "computeSum", "vulcan-compute-sum.csv", "polynomial-3",
            Dawdle( AnyOutput() ))
 Operation( "BGQ-core", "computerk", "vulcan-compute-rk.csv", "polynomial-3",
-           Dawdle( AnyOutput() ))
+           Dawdle( AnyOutput()+0.00000004 ))
 Operation( "BGQ-core", "comminit", "vulcan-compute-comminit.csv", "linear",
            Dawdle( AnyOutput() ))
 Operation( "BGQ-core", "comminitaxis", "vulcan-compute-comminitaxis.csv", "linear",
@@ -84,20 +86,64 @@ Operation( "BGQ-core", "cleanFaces", "vulcan-compute-cleanface.csv", "linear",
 Mailbox( "BGQ-core", "unwait", lambda source, target, size, tag: [source],
          OnTarget )
 
+Component( "BGQ-network-3" )
+Attribute( "BGQ-network-3", "usage", 0.0 )
+
+Operation( "BGQ-network-3", "transfer", "vulcan-transfer.csv", "linear",
+           Dawdle( AnyOutput() ) )
+
+Mailbox( "BGQ-network-3", "transfer", lambda source, target, size, tag: [size],
+         OnAll )
+
 Component( "BGQ-network" )
 Attribute( "BGQ-network", "usage", 0.0 )
 
 Operation( "BGQ-network", "transfer", "vulcan-transfer.csv", "linear",
-           Dawdle( AnyOutput()+0.00000004 ))
+           Dawdle( AnyOutput() ) )
 
 Mailbox( "BGQ-network", "transfer", lambda source, target, size, tag: [size],
          OnAll )
 
-#Component("Node")
-#Offspring( "Node", Mesh( "BGQ-core", "BGQ-network", [ 2, 2, 2, 2, 2 ] ) )
+Component( "BGQ-network-2" )
+Attribute( "BGQ-network-2", "usage", 0.0 )
+
+Operation( "BGQ-network-2", "transfer", "vulcan-transfer.csv", "linear",
+           Dawdle( AnyOutput() ) )
+
+Mailbox( "BGQ-network-2", "transfer", lambda source, target, size, tag: [size],
+         OnAll )
+
+Component( "BGQ-network-1" )
+Attribute( "BGQ-network-1", "usage", 0.0 )
+
+Operation( "BGQ-network-1", "transfer", "vulcan-transfer.csv", "linear",
+           Dawdle( AnyOutput() ) )
+
+Mailbox( "BGQ-network-1", "transfer", lambda source, target, size, tag: [size],
+         OnAll )
+
+Component( "BGQ-network-Root" )
+Attribute( "BGQ-network-Root", "usage", 0.0 )
+
+Operation( "BGQ-network-Root", "transfer", "vulcan-transfer.csv", "linear",
+           Dawdle( AnyOutput() ) )
+
+Mailbox( "BGQ-network-Root", "transfer", lambda source, target, size, tag: [size],
+         OnAll )
+
+Component("Node")
+Offspring( "Node", Mesh( "BGQ-core", "BGQ-network", [ 2, 2, 2, 2, 2 ] ) )
 
 Component( "system" )
+Component("BGQ-connection-3")
+Component("BGQ-connection-2")
+Component("BGQ-connection-1")
+Component("BGQ-connection-Root")
+Component("Node")
+
 #Offspring( "system", Mesh( "Node", "BGQ-network", [ 2, 2, 2, 2, 2 ] ) )
-Offspring( "system", Torus( "BGQ-core", "BGQ-network", [ 8, 8, 8, 8, 8 ] ) )
-#Offspring( "system", Tree( ["BGQ-connection-3", "BGQ-connection-2", "BGQ-connection-1", "BGQ-core"], ["BGQ-network-3", "BGQ-network-2", "BGQ-network-1"], [8, 8, 8] ) )
+#Offspring( "system", Torus( "BGQ-core", "BGQ-network", [2,2,2] ) )
+#print("ddf")
+Offspring( "system", Tree( ["BGQ-connection-Root", "BGQ-connection-3", "BGQ-connection-2", "BGQ-connection-1", "BGQ-core"], ["BGQ-network-Root","BGQ-network-3", "BGQ-network-2", "BGQ-network-1"], [3,2,2,3] ) )
+#Offspring( "system", Torus( "Node", "BGQ-network", [1, 1, 2] ) )
 Root("system")

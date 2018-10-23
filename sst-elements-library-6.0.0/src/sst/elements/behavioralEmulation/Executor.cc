@@ -14,14 +14,17 @@ std::shared_ptr<simEvent> Executor::run()
     FuncP operation;    
     std::shared_ptr<simEvent> event;
 
-    while (instruction != program.end()){
+    while (instruction != program.end())
+    {
         
         if((simulation_handler->sim_flags)->debug == gid) std::cout << "Software for "<< gid << "-> Instruction: " << instruction->kind << " line: " << instruction->line << std::endl;
 
         if (instruction->kind == "call"){
             event = call(instruction->operands);                 
         }
-        else if (instruction->kind == "comm"){
+        else if (instruction->kind == "comm")
+	{
+	  
             //printf("Inside this\n");
             event = comm(instruction->operands.begin());            
         }
@@ -39,10 +42,16 @@ std::shared_ptr<simEvent> Executor::run()
             (this->*operation)(instruction->operands);
 			            
         }
-        
+       
        instruction++;
        if (event)
-         return event;
+       {
+	 //instruction--;
+	 //if(gid==1)
+	  //std::cout<<"Line ="<<instruction->line<<"\t kind ="<<instruction->kind<<"\t";
+         //instruction++;
+	 return event;
+       }
      } 
     
     return NULL;
@@ -103,8 +112,9 @@ void Executor::buildProgram(std::string filename)
             inst_name.erase(end_pos, inst_name.end());
             line = "";
             //std::cout<<inst_num<<"--"<<inst_name<<"--"<<inst_operands<<"\n";
-            program.push_back(Instruction((inst_num.substr(1, inst_num.size()-2)), inst_name, inst_operands));
-            
+	  
+            program.push_back(Instruction((inst_num.substr(1, inst_num.size()-2)), inst_name, inst_operands,gid));
+       
         }
 
     }
@@ -164,6 +174,8 @@ std::shared_ptr<simEvent> Executor::comm(std::vector<std::string>::iterator op){
         std::string ranks_string = *(++op);
         std::string tag_string = *(++op);
 
+	
+	//std::cout<<"operation -> "<<operation<<" size string -> "<<size_string<<" ranks string -> "<<ranks_string<<"tag string "<<tag_string<<"\n";
         int size, ranks, tag;
 
         std::queue<std::shared_ptr<Process>> message_queue;
@@ -172,15 +184,20 @@ std::shared_ptr<simEvent> Executor::comm(std::vector<std::string>::iterator op){
         ranks_string[0]=='r' ? ranks = registers[ranks_string] : ranks = stoi(ranks_string);
         tag_string[0]=='r' ? tag = registers[tag_string] : tag = stoi(tag_string);
 
-
+	//std::cout<<"size = "<<size<<"  ranks"<<ranks<<"  tag"<<tag<<"\n";
+	//std::cout<<"v indep"<<v_indep<<"v simul"<<v_simul<<"\n";
+	
 	if (v_indep || v_simul){
-	  auto message = simulation_handler->comm(gid, pid, getEventId(), operation, size, ranks, tag, "non-blocking");
+	  auto message = simulation_handler->comm(gid, pid, getEventId(), operation, size, ranks, tag, "non-blocking","shekar");
     	  process_queue.push(message);    	
     	  return NULL;
         }
-        else{
-    	    auto message = simulation_handler->comm(gid, pid, getEventId(), operation, size, ranks, tag, "blocking");
-    	    message_queue.push(message);
+        else
+	{
+	  //  std::cout<<"Before \n";
+    	    auto message = simulation_handler->comm(gid, pid, getEventId(), operation, size, ranks, tag, "blocking","raja");
+    	   // std::cout<<"After \n";
+	    message_queue.push(message);
             auto subEv = std::make_shared<subprocessEvent>(message_queue);
     	    return subEv;
         }

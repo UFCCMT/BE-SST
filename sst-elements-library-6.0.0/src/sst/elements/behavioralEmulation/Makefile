@@ -264,26 +264,26 @@ CTAGS = ctags
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/config/depcomp \
 	README
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/ajay/scratch/src/sst-elements-library-6.0.0/config/missing aclocal-1.15
+ACLOCAL = ${SHELL} /home/raja/SST/sst-elements-library-6.0.0/config/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
-AUTOCONF = ${SHELL} /home/ajay/scratch/src/sst-elements-library-6.0.0/config/missing autoconf
-AUTOHEADER = ${SHELL} /home/ajay/scratch/src/sst-elements-library-6.0.0/config/missing autoheader
-AUTOMAKE = ${SHELL} /home/ajay/scratch/src/sst-elements-library-6.0.0/config/missing automake-1.15
-AWK = gawk
+AUTOCONF = ${SHELL} /home/raja/SST/sst-elements-library-6.0.0/config/missing autoconf
+AUTOHEADER = ${SHELL} /home/raja/SST/sst-elements-library-6.0.0/config/missing autoheader
+AUTOMAKE = ${SHELL} /home/raja/SST/sst-elements-library-6.0.0/config/missing automake-1.15
+AWK = mawk
 BOOST_LIB_SUFFIX = 
-CC = gcc
+CC = gcc -std=gnu99
 CCDEPMODE = depmode=gcc3
-CC_VERSION = gcc (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609
+CC_VERSION = gcc (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4
 CFLAGS = -g -O2
 CHDL_CPPFLAGS = 
 CHDL_CXXFLGAS = 
 CHDL_LDFLAGS = 
 CHDL_LIBDIR = 
 CHDL_LIBS = 
-CPP = gcc -E
-CPPFLAGS =   -I/usr/local/include/python2.7 -I/usr/local/include/python2.7 -I/home/ajay/local/packages/boost-1.56-2/include -I/home/ajay/local/sst-core-6.0/include/sst/core -I/home/ajay/local/sst-core-6.0/include
+CPP = gcc -std=gnu99 -E
+CPPFLAGS =   -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7 -I/home/raja/Boost_Final//include -I/home/raja/sst_core/include/sst/core -I/home/raja/sst_core/include
 CXX = g++
 CXXCPP = g++ -E
 CXXDEPMODE = depmode=gcc3
@@ -332,7 +332,7 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LD = /usr/bin/ld -m elf_x86_64
-LDFLAGS =   -L/home/ajay/local/packages/boost-1.56-2/lib -lpthread -ldl -lutil -lm -lpython2.7 -Xlinker -export-dynamic
+LDFLAGS =   -L/home/raja/Boost_Final//lib -L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpthread -ldl  -lutil -lm  -lpython2.7 -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
 LIBADD_DL = -ldl 
 LIBADD_DLD_LINK = 
 LIBADD_DLOPEN = -ldl
@@ -359,14 +359,14 @@ LT_CONFIG_H = src/sst_element_config.h
 LT_DLLOADERS =  dlopen.la
 LT_DLPREOPEN = -dlpreopen dlopen.la 
 LT_SYS_LIBRARY_PATH = 
-MAKEINFO = ${SHELL} /home/ajay/scratch/src/sst-elements-library-6.0.0/config/missing makeinfo
+MAKEINFO = ${SHELL} /home/raja/SST/sst-elements-library-6.0.0/config/missing makeinfo
 MANIFEST_TOOL = :
 METIS_CPPFLAGS = 
 METIS_LDFLAGS = 
 METIS_LIB = 
 METIS_LIBDIR = 
-MICRON_HMCSIM_CPPFLAGS =   -I/usr/local/include/python2.7 -I/usr/local/include/python2.7 -I/home/ajay/local/packages/boost-1.56-2/include -I/home/ajay/local/sst-core-6.0/include/sst/core -I/home/ajay/local/sst-core-6.0/include 
-MICRON_HMCSIM_LDFLAGS =   -L/home/ajay/local/packages/boost-1.56-2/lib -lpthread -ldl -lutil -lm -lpython2.7 -Xlinker -export-dynamic  -L
+MICRON_HMCSIM_CPPFLAGS =   -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7 -I/home/raja/Boost_Final//include -I/home/raja/sst_core/include/sst/core -I/home/raja/sst_core/include 
+MICRON_HMCSIM_LDFLAGS =   -L/home/raja/Boost_Final//lib -L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpthread -ldl  -lutil -lm  -lpython2.7 -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions  -L
 MICRON_HMCSIM_LIBDIR = 
 MICRON_HMCSIM_LIBS = -lhmcsim 
 MKDIR_P = /bin/mkdir -p
@@ -396,7 +396,7 @@ PATH_SEPARATOR = :
 PINTOOL_CPPFLAGS =  -DPINTOOL_EXECUTABLE=""""
 PINTOOL_DIR = 
 PINTOOL_LDFLAGS = 
-PINTOOL_PATH = /home/ajay/local/sst-core-6.0/bin:/home/ajay/local/sst-5.1/bin:/home/ajay/local/sst-5.1/bin:/home/ajay/local/packages/OpenMPI-1.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ajay/.openmpi/bin
+PINTOOL_PATH = /home/raja/sst_core//bin:/home/raja/sst_elements/bin:/home/raja/sst_core//bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 PINTOOL_RUNTIME = 
 QSIM_CPPFLAGS = 
 QSIM_LDFLAGS = 
@@ -408,21 +408,21 @@ SET_MAKE =
 SHELL = /bin/bash
 SSTELEMENTS_GIT_COMMITCOUNT = 0
 SSTELEMENTS_GIT_HEADSHA = 6.0.0
-SST_ACTIVE_ELEMENT_LIBRARIES =  VaultSimC cacheTracer cassini ember firefly hermes memHierarchy merlin miranda prospero pyproto scheduler behavioralEmulation thornhill zodiac
-SST_CONFIG_TOOL = /home/ajay/local/sst-core-6.0/bin/sst-config
-SST_DIST_ELEMENT_LIBRARIES =  HMC SysC VaultSimC ariel cacheTracer cassini chdlComponent ember firefly hermes memHierarchy merlin miranda prospero pyproto qsimComponent scheduler behavioralEmulation thornhill zodiac
-SST_PREFIX = /home/ajay/local/sst-core-6.0
-SST_REGISTER_TOOL = /home/ajay/local/sst-core-6.0/bin/sst-register
+SST_ACTIVE_ELEMENT_LIBRARIES =  VaultSimC cacheTracer cassini ember firefly hermes memHierarchy merlin miranda prospero pyproto simpleElementExample behavioralEmulation thornhill zodiac
+SST_CONFIG_TOOL = /home/raja/sst_core//bin/sst-config
+SST_DIST_ELEMENT_LIBRARIES =  HMC SysC VaultSimC ariel cacheTracer cassini chdlComponent ember firefly hermes memHierarchy merlin miranda prospero pyproto qsimComponent simpleElementExample behavioralEmulation thornhill zodiac
+SST_PREFIX = /home/raja/sst_core
+SST_REGISTER_TOOL = /home/raja/sst_core//bin/sst-register
 SST_SYSTEMC_CPPFLAGS = 
 SST_SYSTEMC_LDFLAGS = 
 SST_SYSTEMC_LIB = 
 SST_SYSTEMC_LIBDIR = 
 STRIP = strip
 VERSION = 6.0.0
-abs_builddir = /home/ajay/scratch/src/sst-elements-library-6.0.0/src/sst/elements/behavioralEmulation
-abs_srcdir = /home/ajay/scratch/src/sst-elements-library-6.0.0/src/sst/elements/behavioralEmulation
-abs_top_builddir = /home/ajay/scratch/src/sst-elements-library-6.0.0
-abs_top_srcdir = /home/ajay/scratch/src/sst-elements-library-6.0.0
+abs_builddir = /home/raja/SST/sst-elements-library-6.0.0/src/sst/elements/behavioralEmulation
+abs_srcdir = /home/raja/SST/sst-elements-library-6.0.0/src/sst/elements/behavioralEmulation
+abs_top_builddir = /home/raja/SST/sst-elements-library-6.0.0
+abs_top_srcdir = /home/raja/SST/sst-elements-library-6.0.0
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_CXX = g++
@@ -452,7 +452,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/ajay/scratch/src/sst-elements-library-6.0.0/config/install-sh
+install_sh = ${SHELL} /home/raja/SST/sst-elements-library-6.0.0/config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -463,7 +463,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/ajay/local/sst-elements-6.0
+prefix = /home/raja/sst_element_new
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -588,7 +588,14 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/simpleClockerComponent.Plo
+include ./$(DEPDIR)/simpleComponent.Plo
+include ./$(DEPDIR)/simpleDistribComponent.Plo
 include ./$(DEPDIR)/behavioralEmulation.Plo
+include ./$(DEPDIR)/simpleLookupTableComponent.Plo
+include ./$(DEPDIR)/simpleMessageGeneratorComponent.Plo
+include ./$(DEPDIR)/simpleRNGComponent.Plo
+include ./$(DEPDIR)/simpleStatisticsComponent.Plo
 
 .cc.o:
 	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\

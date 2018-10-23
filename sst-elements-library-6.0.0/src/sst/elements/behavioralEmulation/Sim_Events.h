@@ -17,7 +17,8 @@ public:
     double value; // procrastinator!
 
 public:
-    void serialize_order(SST::Core::Serialization::serializer &ser) {
+    void serialize_order(SST::Core::Serialization::serializer &ser) 
+    {
         Event::serialize_order(ser);
         ser & type;
         ser & value;

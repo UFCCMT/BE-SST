@@ -2,16 +2,16 @@ from cartesianrank import CartesianGrid
 
 global cartesianData
 
-cartesianData = CartesianGrid(8, 4, 4)
+cartesianData = CartesianGrid(16, 16, 8)
 
 Component( "Titan-core" )
-Program( "Titan-core", "cmt-bone-be.txt" )
+Program( "Titan-core", "cmt-bone-be100.txt" )
 
-Property( "Titan-core", "app.elementSize", lambda gid, cid, cids, index: 9 )
+Property( "Titan-core", "app.elementSize", lambda gid, cid, cids, index: 16 )
 Property( "Titan-core", "app.elementsPerProcess", lambda gid, cid, cids, index: 64 )
-Property( "Titan-core", "app.transferSizeX", lambda gid, cid, cids, index: 51840 )
-Property( "Titan-core", "app.transferSizeY", lambda gid, cid, cids, index: 51840 )
-Property( "Titan-core", "app.transferSizeZ", lambda gid, cid, cids, index: 51840 )
+Property( "Titan-core", "app.transferSizeX", lambda gid, cid, cids, index: 163840 )
+Property( "Titan-core", "app.transferSizeY", lambda gid, cid, cids, index: 163840 )
+Property( "Titan-core", "app.transferSizeZ", lambda gid, cid, cids, index: 163840 )
 Property( "Titan-core", "app.timesteps", lambda gid, cid, cids, index: 1 )
 Property( "Titan-core", "app.phyParam", lambda gid, cid, cids, index: 5 )
 
@@ -90,7 +90,7 @@ Operation( "Titan-network-node", "transfer", "titan-transfer-inter-bw.csv", "lin
 Mailbox( "Titan-network-node", "transfer", lambda source, target, size, tag: [size],
            OnAll )
 Component( "node" )
-Offspring( "node", Mesh( "Titan-core", "Titan-network-core", [ 4, 2, 2 ] ) )
+Offspring( "node", Torus( "Titan-core", "Titan-network-core", [ 4, 2, 2 ] ) )
 Component( "system" )
-Offspring( "system", Mesh( "node", "Titan-network-node", [ 2, 2, 2 ] ) )
+Offspring( "system", Torus( "node", "Titan-network-node", [ 8, 4, 4 ] ) )
 Root("system")

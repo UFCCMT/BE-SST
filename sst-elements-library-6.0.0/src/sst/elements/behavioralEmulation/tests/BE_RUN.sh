@@ -27,7 +27,6 @@ fi
 
 echo 'import sst
 from simulator_build import Simulator
-
 # Define SST core options
 sst.setProgramOption("timebase", "1 ps")
 #sst.setProgramOption("stopAtCycle", "25us")
@@ -38,7 +37,6 @@ output_file = "'$OUTPUT_FILE'"
 interpolation = "'$INTERPOLATION'"
 debug = "'$DEBUG'"
 eventtrace = "'$TRACE'"
-
 sim = Simulator(system_config)
 
 sim.build()
@@ -62,6 +60,10 @@ system_netsizes = sim.layout.netsizes
 system_netnames = sim.layout.netnames
  
 root = sim.designer.system
+
+
+
+
 
 layout = ""
 
@@ -138,7 +140,6 @@ for gid in system_gids:
 
 
 def neighbourPos(dim, so, ne):
-
     fac = 1
     i = 0
 
@@ -150,7 +151,6 @@ def neighbourPos(dim, so, ne):
     return -1
 
 def wrapPos(dim, so, ne):
-
     i = 0
     wrap = 1
 
@@ -164,10 +164,9 @@ def wrapPos(dim, so, ne):
     return (0, -1)
 
 def TorusNeighbours(neighbours, dim, cid):
-
     plus_links = [-1]*len(dim)
     minus_links = [-1]*len(dim)
-
+    #print("2222222222222")
     for ne in neighbours:
 
         ncid = system_cids[ne[0]]
@@ -186,7 +185,6 @@ def TorusNeighbours(neighbours, dim, cid):
     return (plus_links, minus_links)
 
 def MeshNeighbours(neighbours, dim, cid):
-
     plus_links = [-1]*len(dim)
     minus_links = [-1]*len(dim)
 
@@ -200,10 +198,25 @@ def MeshNeighbours(neighbours, dim, cid):
 
     return (plus_links, minus_links)
 
-
+def TreeNeighbours(neighbours, dim, gid):
+    plus_links = []
+    minus_links = []
+    
+    for ne in neighbours: 
+        
+        ncid = ne[0]
+        ncid_link = ne[1]
+        if ncid > gid: minus_links.append(ncid_link)
+        
+        elif ncid < gid: plus_links.append(ncid_link)
+           
+    return (plus_links, minus_links)
+#import pdb
+#pdb.set_trace()
+#print(system_tallies)
 # Define the simulation parameters
 for gid in system_gids:
-
+    #	pdb.set_trace()
     properties = {}
     attributes = []
     config_mailbox = []
@@ -213,19 +226,28 @@ for gid in system_gids:
               if gid in system_indices else None)
     
     for property_name in system_properties[system_kinds[gid]]:
-        properties[property_name] = system_properties[system_kinds[gid]][property_name](gid, system_cids[gid], system_tallies[system_kinds[gid]], index)
-
+	#print("Before calling the function")        
+	#import pdb()	
+	properties[property_name] = system_properties[system_kinds[gid]][property_name](gid, system_cids[gid], system_tallies[system_kinds[gid]], index)
+	
+    
+    #print("Properties for gid") 
+    #print(gid)
+    #print(properties)
+    #import pdb
+    #pdb.set_trace()
     if system_kinds[gid] in system_attributes: attributes = system_attributes[system_kinds[gid]]  
 
     if system_kinds[gid] in system_mailboxes: config_mailbox = system_mailboxes[system_kinds[gid]]
-
+    
+    #print("rrrrrrrrrrrrrrRR")
     for entry in config_mailbox:
         simulation_mailbox.append((entry[0], entry[1]("source", "target", "size", "tag"), entry[2]))
 
 
     if system_kinds[gid] == root:
         pass
-
+    
     elif gid not in component_links and gid in ic_links:
 
         links = links+1
@@ -306,7 +328,7 @@ for gid in system_gids:
 
         if topo == "mesh": link_tuple = MeshNeighbours(neighbours, dim, cid)
         elif topo == "torus": link_tuple = TorusNeighbours(neighbours, dim, cid)
-        #elif topo == "tree": link_tuple = TreeNeighbours(neighbours, dim, gid)  
+        elif topo == "tree": link_tuple = TreeNeighbours(neighbours, dim, gid)  
 
         plus_links = link_tuple[0]
         minus_links = link_tuple[1]
@@ -347,7 +369,7 @@ for gid in system_gids:
 
         if topo == "mesh": link_tuple = MeshNeighbours(neighbours, dim, cid)
         elif topo == "torus": link_tuple = TorusNeighbours(neighbours, dim, cid)
-        #elif topo == "tree": link_tuple = TreeNeighbours(neighbours, dim, gid)  
+        elif topo == "tree": link_tuple = TreeNeighbours(neighbours, dim, gid)  
 
         plus_links = link_tuple[0]
         minus_links = link_tuple[1]
@@ -406,7 +428,8 @@ system_comps[0].addParams({
   "Software Program"	 : """none"""
 })    
 
-#print "The number of components are:- \n", "1) Cores: ", cores, "\n2) Links: ", links, "\n3) Containers: ", containers, "\n4) assists: ", assists' > "SimulationStarter-$SYSTEM_CONFIG"
+#print ("Rajashekar")
+print "The number of components are:- \n", "1) Cores: ", cores, "\n2) Links: ", links, "\n3) Containers: ", containers, "\n4) assists: ", assists' > "SimulationStarter-$SYSTEM_CONFIG"
 
 for ts in `seq 1 $TIMESTEPS`
 do

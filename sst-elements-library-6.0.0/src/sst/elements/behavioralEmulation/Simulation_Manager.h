@@ -35,7 +35,7 @@ public:
 	interpolation_scheme = "linear";
         output_file = "";
         traceOutput = "";
-        debug = -1;
+        debug = 9;
     }
 
     std::string interpolation_scheme;
@@ -140,7 +140,7 @@ public:
 
     std::shared_ptr<Routine> call(int eventId, int source_gid, int source_pid, int target_gid, std::string target, std::string operation, std::vector<float> inputs, std::string call_type);
 
-    std::shared_ptr<Message> comm(int gid, int pid, int eventId, std::string operation, int size, int target_rank, int tag, std::string comm_type);
+    std::shared_ptr<Message> comm(int gid, int pid, int eventId, std::string operation, int size, int target_rank, int tag, std::string comm_type, std::string myname);
 
     std::shared_ptr<Executor> prog(std::string filename);
     

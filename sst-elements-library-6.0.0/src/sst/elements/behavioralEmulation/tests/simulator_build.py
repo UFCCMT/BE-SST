@@ -27,7 +27,7 @@ from copy import copy, deepcopy
 
 import operator
 import random
-
+import pdb
 
 # --------------------------------------------------------------------------- #
 # ------------------------ Setup and Type Definitions ----------------------- #
@@ -54,38 +54,100 @@ class Node(object):
 
 def tree(ns, es, sizes):
     """Create a tree structure of routing indices and edges."""
-
+    import pdb
+    #pdb.set_trace()
+    dim_count = 0
     def recurse(nodes, edges, parent, remaining):
-
+	#pdb.set_trace()
         # Get the types and size for this level.
         n, e, size = remaining.pop(0)
-
+	
         # Construct the leaf node types and indices.
         leaves = [ (n, TREE, sizes, Node(parent.index + (i,)))
                    for i in range(size) ]
         nodes.extend(leaves)
-
+        
+        current_dimension = str(leaves[0][-1])
+        dim_count = current_dimension.count(',') + 1
         # Make a connection between each leaf node and the parent.
-        edges.extend([(e, TREE, sizes, (parent, i)) for _, _, _, i in leaves])
-
-        # If there's still work to be done, drop to the next level.
+        
+	'''if(dim_count == 3):
+	  half_count = int(ceil(sizes[0]/2.0))
+	  if(parent.index[-1] < half_count):
+	    for i in range(sizes[0]):
+	      index_fat_tree = Node(((0,)+(i,)+(0,)))
+	      #index_fat_tree = tuple(index_fat_tree)
+	      edges.extend([(e, TREE, sizes, (parent,index_fat_tree))])
+	  else:
+	    for i in range(sizes[0]):
+	      index_fat_tree = Node(((0,)+(i,)+(1,)))
+	      #index_fat_tree = tuple(index_fat_tree)
+	      edges.extend([(e, TREE, sizes, (parent,index_fat_tree))])
+        elif(dim_count == 4):
+	  if (parent.index[2]==0):
+	    for i in range(2):
+	      index_fat_tree = Node(((parent.index[0],)+(parent.index[1],)+(i,)+(0,)))
+	      #index_fat_tree = tuple(index_fat_tree)
+	      edges.extend([(e, TREE, sizes, (parent,index_fat_tree))])
+	  elif (parent.index[2]==1):
+	    for i in range(1,-1,-1):
+	      index_fat_tree = Node(((parent.index[0],)+(parent.index[1],)+(i,)+(0,)))
+	      #index_fat_tree = tuple(index_fat_tree)
+	      edges.extend([(e, TREE, sizes, (parent,index_fat_tree))])''' #This is for folded claus fat tree
+	if(dim_count == 3):
+	    for i in range(sizes[0]):
+		for j in range(sizes[1]):
+		    index_fat_tree = Node(((parent.index[0],)+(i,)+(j,)))
+		    edges.extend([(e, TREE, sizes, (parent,index_fat_tree))]) 
+	elif(dim_count == 4):
+		if(parent.index[-1]%2==0):
+		    for i in range(2):
+			    for j in range(sizes[-2]):
+				if(i==0):
+				    index_fat_tree = Node(((parent.index[0],)+(parent.index[1],)+(parent.index[2],)+(j,)))
+				    edges.extend([(e, TREE, sizes, (parent,index_fat_tree))]) 
+				elif(i==1):
+				    if(parent.index[-1]%2==0):
+					k = parent.index[-1]+1
+				    else:
+					k = parent.index[-1]-1
+				    index_fat_tree = Node(((parent.index[0],)+(parent.index[1],)+(k,)+(j,)))
+				    edges.extend([(e, TREE, sizes, (parent,index_fat_tree))]) 
+		else:
+		  for i in range(2):
+			    for j in range((sizes[-2]-1),-1,-1):
+				if(i==0):
+				    index_fat_tree = Node(((parent.index[0],)+(parent.index[1],)+(parent.index[2],)+(j,)))
+				    edges.extend([(e, TREE, sizes, (parent,index_fat_tree))]) 
+				elif(i==1):
+				    if(parent.index[-1]%2==0):
+					k = parent.index[-1]+1
+				    else:
+					k = parent.index[-1]-1
+				    index_fat_tree = Node(((parent.index[0],)+(parent.index[1],)+(k,)+(j,)))
+				    edges.extend([(e, TREE, sizes, (parent,index_fat_tree))])
+		# If there's still work to be done, drop to the next level.
+        else:
+	  edges.extend([(e, TREE, sizes, (parent, i)) for _, _, _, i in leaves])
         if remaining:
             for leaf in leaves:
-                recurse(nodes, edges, leaf[-1], copy(remaining))
+                recurse(nodes, edges, leaf[-1],copy(remaining))
 
     sizes = tuple(sizes)
 
     # Construct the root node.
     nodes, edges = [(ns.pop(0), TREE, sizes, Node((0,)) )], []
-
+   
     # Build the tree.
     recurse(nodes, edges, nodes[0][-1], zip(ns, es, sizes))
 
+    #print ("nodes + edges")
+    #print (nodes+edges)
     return nodes + edges
 
 def glue(things, wrap=False):
     """Glue together (link across one dimension) a list of objects."""
-
+    #pdb.set_trace()
     edges = []
 
     for thing in things[ (0 if wrap else 1): ]:
@@ -105,9 +167,12 @@ def glue(things, wrap=False):
 
 def assign(things, indices=()):
     """Assign routing indices to each element in a block."""
-
+    #import pdb;
+    #pdb.set_trace()
+    
     for i, thing in enumerate(things):
 
+	
         # Calculate the current index.
         current = indices + ( i, )
 
@@ -119,7 +184,7 @@ def assign(things, indices=()):
 
 def block(n, e, sizes, wrap):
     """Create a multi-dimensional block of routing indices and edges."""
-
+    #pdb.set_trace()
     # Build the first dimension.
     block = [ Node() for _ in range(sizes[-1]) ]
     edges = glue(block, wrap=wrap)
@@ -149,7 +214,7 @@ def block(n, e, sizes, wrap):
 
 def pTOp(na, e, nb):
     """Create a single dimension connection of different routing indices and edges."""
-
+    #pdb.set_trace()
     # Build the first dimension.
     block = [ Node(), Node() ]
     edges = glue(block, wrap=False)
@@ -166,7 +231,7 @@ def pTOp(na, e, nb):
 
 def cube(n, e, degree):
     """Create a hypercube of routing indices and edges."""
-
+    #pdb.set_trace()
     # Start with a zero-dimensional hypercube.
     cube, edges = Node(), []
 
@@ -200,7 +265,8 @@ class Designer(object):
 
     def __init__(self, simulator):
         """The Designer is most of the the configuration-file interface."""
-
+	#import pdb
+	#pdb.set_trace()
         self.simulator = simulator
 
         self.ordinals = {}
@@ -222,10 +288,12 @@ class Designer(object):
 
     def root(self, kind):
         """Define the root component of a system."""
+        #pdb.set_trace()
         self.system = kind
 
     def componentN(self, name, family, kind):
         """Define a component from an existing template."""
+        #pdb.set_trace()
         if kind == "none":
             self.components[name] = []
         else:
@@ -234,38 +302,47 @@ class Designer(object):
 
     def component(self, kind):
         """Define a new component template from a name."""
+        #pdb.set_trace()
         self.components[kind] = []
 
     def subcomponent(self, parent, children):
         """Give one of the templates a group of children."""
+        #pdb.set_trace()
         self.components[parent].extend(children)
 
     def mailbox(self, kind, operation, operands, targets):
         """Give a component a mailbox."""
+        #pdb.set_trace()
         self.simulator.mailboxes[kind].append( (operation, operands, targets) ) #Multiple operations per kind?
 
     def program(self, kind, filename):
         """Give a component template a program."""
+        #pdb.set_trace()
         self.simulator.programs[kind] = filename
 
     def ordinal(self, kind, name):
         """Give a component template a routing index (a named property)."""
+        #pdb.set_trace()
         self.ordinals[kind] = name
 
     def property(self, kind, name, value):
         """Give a component template a property."""
+        #pdb.set_trace()
         self.properties[kind][name] = value
 
     def relation(self, kind, other, name, relation):
         """Give a component template a relationship to another."""
+        #pdb.set_trace()
         self.relations[kind].append( (other, name, relation) )
 
     def attribute(self, kind, name, initial):
         """Give a component template an attribute with initial value."""
+        #pdb.set_trace()
         self.simulator.attributes[kind].append( (name, initial) )
 
     def operation(self, kind, name, filename, interpolation, *templates):
         """Give a component template an operation."""      
+        #pdb.set_trace()
         if not (isinstance(kind, basestring) and isinstance(name, basestring) and (isinstance(filename, basestring) or filename is None) and (isinstance(interpolation, basestring) or interpolation is None)): 
             raise ValueError("Operation configuration format is wrong for "+str(name)+"!")
  
@@ -276,6 +353,7 @@ class Designer(object):
             self.simulator.operationDetails[kind][name][2].append(template.representation)
 
     def build(self):
+        #pdb.set_trace()
         """Construct the layout from provided parameters."""
         return Layout( self.system, self.components, self.properties,
                        self.ordinals, self.relations )
@@ -287,6 +365,7 @@ class Layout(object):
         """The Layout contains the structure of a system."""
 
         # Things which many or all components have:
+        #pdb.set_trace()
         self.cids = []
         self.kinds = []
         self.edges = []
@@ -323,7 +402,8 @@ class Layout(object):
     def new(self, cid, kind, parent, edges, children,
             index=None, netname=None, netsize=None):
         """Add a new component to the structure."""
-
+	#import pdb	
+	#pdb.set_trace()
         # The current GID is the length of any of the manditory parameters.
         gid = len(self.cids)
 
@@ -341,8 +421,11 @@ class Layout(object):
 
     def build(self, root, components, properties, ordinals, relations):
         """Construct the layout from assorted parameters."""
-
+	print("Inside build")
         # Keep track of how many of each thing we have.
+        #import pdb
+        #pdb.set_trace()
+        #pdb.set_trace
         self.tallies = defaultdict(lambda: 0)
 
         self.tallies[root] = 1
@@ -354,7 +437,8 @@ class Layout(object):
         GID = lambda : len(self.cids) - 1
 
         def recurse(current):
-
+	    #import pdb
+	    #pdb.set_trace()
             # Keep a mapping of index-to-GID so we don't need to search later.
             indices = {}
 
@@ -362,7 +446,8 @@ class Layout(object):
             PGID = GID()
 
             for kind, netname, netsize, part in current:
-
+		#import pdb
+		#pdb.set_trace()
                 if isinstance(part, Node): # If this part is a Node proper:
 
                     # Make the entry for this component (sans some properties).
@@ -372,7 +457,7 @@ class Layout(object):
 
                     # Add this entry to its parents children.
                     self.children[PGID].add( GID() )
-
+	
                     # Update the mapping.
                     if part.index: indices[part.index] = GID()
 
@@ -396,12 +481,14 @@ class Layout(object):
                             ancestor = self.parents[ancestor]
 
                 else: # Else it is an edge:
-
+		    #import pdb
+		    #pdb.set_trace()
                     # Build the entry for this edge component.
                     self.new( self.tallies[kind], kind, PGID, [], set(),
                               netname=netname, netsize=netsize )
 
                     # Recall the GIDs of the referenced nodes.
+                    
                     AGID, BGID = indices[part[0].index], indices[part[1].index]
 
                     # Add this entry to its parents children.
@@ -424,7 +511,7 @@ class Layout(object):
 
         # For every entry in the structure:
         for gid in self.gids():
-
+	    #pdb.set_trace()
             # For each relation in this type of entry:
             for other, name, relation in relations[self.kinds[gid]]:
 
@@ -623,6 +710,7 @@ class Simulator(object):
     def __init__( self, filename ):
         """The Simulator is the simulation manager."""
 
+	#pdb.set_trace()
         self.filename = filename
 
         # Initialize the setup parameters.
@@ -648,7 +736,7 @@ class Simulator(object):
 
     def build(self):
         """Create the structure of the simulation."""
-
+	#pdb.set_trace()
         self.layout = self.designer.build()
 
         self.gids = self.layout.gids()
@@ -708,7 +796,7 @@ class Simulator(object):
 
     def new(self, filename):
         """configuration file"""
-
+	#pdb.set_trace()
         Root = self.designer.root
         Mailbox = self.designer.mailbox
         Program = self.designer.program
@@ -751,6 +839,5 @@ class Simulator(object):
         # ---------------------- Run the Configuration File --------------------- #
 
         execfile(filename)
-
 
 

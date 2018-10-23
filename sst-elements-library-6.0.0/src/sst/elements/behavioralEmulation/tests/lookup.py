@@ -455,7 +455,6 @@ class Linear(object):
 def lookupValue(filename, inputs, i_scheme):
 
     degree = 1
-
     if str(i_scheme).find("polynomial") != -1:
         if str(i_scheme).find("-") != -1: degree = float(str(i_scheme)[(str(i_scheme).find("-"))+1:])
         else: degree = 1

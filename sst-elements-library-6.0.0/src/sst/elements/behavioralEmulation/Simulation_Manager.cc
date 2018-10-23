@@ -13,6 +13,7 @@ std::tuple<std::vector<double>, std::queue<std::shared_ptr<eventTemplate>>> simM
     std::vector<double> outputs;
     std::string lookup_file, interpolation;
 
+    //std::cout<<"Operation ="<<operation<<"\n";
     if(operations.find(operation) != operations.end()) std::tie(lookup_file, interpolation, templates) = operations[operation];
   
     else {
@@ -22,18 +23,36 @@ std::tuple<std::vector<double>, std::queue<std::shared_ptr<eventTemplate>>> simM
   
     if(lookup_file != "None")
     { 
+//         std::cout<<"operation inside ="<<operation<<"\n";
         /*if(self_gid == 7) {
             for(int j =0; j<inputs.size(); j++) std::cout<<inputs[j]<<" ";
             printf("\n");
         }*/
 
         lookup_cache = getCache();
-    
+	//std::cout<<"begining \n";
+	
+	/*for(auto itr = lookup_cache.begin(); itr != lookup_cache.end(); itr++)
+        {
+	  std::cout<<std::get<0>(itr->first)<<"--";
+	}
+	
+	std::cout<<"\n \n";*/
+	//Raja - What is it doing? the following for loop
+	
         for(auto itr = lookup_cache.begin(); itr != lookup_cache.end(); itr++)
         {
-            if(std::get<0>(itr->first) == lookup_file && vectorCheck(inputs, std::get<1>(itr->first))) {
+	  //std::cout<<"std::get<0>(itr->first)="<<std::get<0>(itr->first)<<"\n";
+            if(std::get<0>(itr->first) == lookup_file && vectorCheck(inputs, std::get<1>(itr->first))) 
+	    {
                 outputs = itr->second;
-                present = true;
+		present = true;
+		//int kkk=1;
+		//if(lookup_file == "vulcan-compute-conv.csv")
+		//for(auto itr_new = outputs.begin(); itr_new != outputs.end(); itr_new++,kkk++)
+		//{
+		  //std::cout<<kkk<<"."<<*itr_new<<"\n";
+		//}
                 break;
             }    
         }
@@ -46,24 +65,27 @@ std::tuple<std::vector<double>, std::queue<std::shared_ptr<eventTemplate>>> simM
 
             if(interpolation == "None" || interpolation == "default") i_scheme = PyString_FromString((sim_flags->interpolation_scheme).c_str());
             else i_scheme = PyString_FromString(interpolation.c_str());
-
+	  
+	    //std::cout<<"calling lookupvalue function \t";
             PyObject* outputList = PyObject_CallFunctionObjArgs(myFunction, filename, inputList, i_scheme, NULL);
                 //PyObject* myValue = PyList_GetItem(outputList, 0);
                 //double result = PyFloat_AsDouble(myValue);
-            outputs = listToVector(outputList);
+	    //std::cout<<"After calling lookupvalue function \n";
+	    outputs = listToVector(outputList);
             lookup_cache[make_tuple(lookup_file, inputs)] = outputs;
             updateCache(lookup_cache);
         }
       
     } 
 
-    return std::make_tuple (outputs, templates);
+    return std::make_tuple (outputs, templates); //Raja - What does this contain
 
 }
 
 
-PyObject* simManager::vectorToList(std::vector<float> data){
-
+PyObject* simManager::vectorToList(std::vector<float> data)
+{
+  //std::cout<<"Data size ="<<data.size()<<"\n";
   PyObject* listObj = PyList_New( data.size() );
 	if (!listObj) throw std::runtime_error("Unable to allocate memory for Python list");
 	for (int i = 0; i < data.size(); i++) {
@@ -100,8 +122,8 @@ std::vector<double> simManager::listToVector(PyObject* incoming){
 }
 
 
-bool simManager::vectorCheck(std::vector<float> list1, std::vector<float> list2){
-
+bool simManager::vectorCheck(std::vector<float> list1, std::vector<float> list2)
+{
     if(list1.size() == list2.size())
     {
         for(int i = 0; i < list1.size(); i++)
@@ -115,7 +137,7 @@ bool simManager::vectorCheck(std::vector<float> list1, std::vector<float> list2)
 }
 
 
-int simManager::obtain(std::string property){  //generalised implementation reqd
+int simManager::obtain(std::string property){  //generalised implementation reqd  - Raja What does this comment means??
 
     try
     {
@@ -156,28 +178,32 @@ std::shared_ptr<Routine> simManager::call(int eventId, int source_gid, int sourc
     int targetGID;
     if(self_gid == source_gid) targetGID = relations[target];
     else targetGID = target_gid;
+       //std::cout<<"Target GID ="<<targetGID<<"\t Self Gid ="<<self_gid<<"\n";
     std::vector<double> outputs;
     std::queue<std::shared_ptr<eventTemplate>> templates;
 
     if(targetGID == self_gid)
     {
+      //std::cout<<"Inside Simulation_Manager Line 166 If \n";
         std::tie(outputs, templates) = lookup(operation, inputs);
-        
+	//std::cout<<"Inside Simulation_Manager call LIne 187 \n";
         if(source_gid != self_gid && call_type == "blocking")
         {
+	    //std::cout<<"Inside Simulation_Manager call LIne 189 \n";
             //std::cout<<"Call being serviced by "<<self_gid<<" for "<<source_gid;
             std::vector<int> sourcePath;
             sourcePath.push_back(self_gid);
             sourcePath.push_back(source_gid);
             templates.push(std::make_shared<ackTemplate>(source_pid, sourcePath, source_gid, true));
         }
-
+	//std::cout<<"Inside Simulation_Manager call LIne 197 \n";
         auto routine = std::make_shared<Routine>(source_gid, eventId, hardware_state, inputs, outputs, templates, "call");  //source_gid instead of targetGid because the owner of call is the source
         return routine;
     }
 
     else
     {
+        //std::cout<<"Inside Simulation_Manager Line 183 Else \n";
         templates.push(std::make_shared<callTemplate>(self_gid, source_pid, targetGID, target, operation, inputs, call_type, true));
         if(call_type == "blocking") templates.push(std::make_shared<waitTemplate>(true));
         auto routine = std::make_shared<Routine>(self_gid, eventId, hardware_state, inputs, outputs, templates, "call");  //previously it was targetGID instead of self_gid. Check if self_gid is okay
@@ -187,10 +213,11 @@ std::shared_ptr<Routine> simManager::call(int eventId, int source_gid, int sourc
 }
 
 
-std::shared_ptr<Message> simManager::comm(int gid, int pid, int eventId, std::string operation, int size, int target_rank, int tag, std::string comm_type){
+std::shared_ptr<Message> simManager::comm(int gid, int pid, int eventId, std::string operation, int size, int target_rank, int tag, std::string comm_type, std::string myname){
 
+   // std::cout<<"My name ="<<myname;
     int source = self_ordinal; //layout->rordinals[executor->gid];
-    //std::cout<<"Source: "<<source<<" and Target: "<<target_rank<<"\n";
+    //std::cout<<"  Source: "<<source<<" and Target: "<<target_rank<<"\n";
     if (operation == "send")
     {
         std::vector<int> locations;// = router->path(source, target_rank);
@@ -216,23 +243,64 @@ std::queue<std::shared_ptr<Process>> simManager::dynamic_mailbox_routines (std::
     std::vector<double> outputs;
     std::queue<std::shared_ptr<eventTemplate>> templates;
     std::queue<std::shared_ptr<Process>> routines;
-
+    
     std::vector<int> rlocations = locations;
     std::reverse(rlocations.begin(), rlocations.end());
 
     std::tuple<bool, bool, bool> targets;
  
-    std::tie(operation, targets) = mailboxes; // list of multiple operations? or just one per kind 
+    std::tie(operation, targets) = mailboxes; // list of multiple operations? or just one per kind
+    
+    
+//    // std::cout<<"Mailbox"<<mailboxes<<"\n";
     std::tie(onSource, onMiddle, onTarget) = targets;
 
+//     if(target == 50)
+//     {
+//       std::cout<<"Locations =\n";
+//       for(std::vector<int>::iterator i = locations.begin(); i != locations.end(); i++)
+//       {
+// 	std::cout<<*i<<"\t";
+//       }
+// 
+//       std::cout<<"\n tar list =\n";
+//       for(std::vector<int>::iterator i = tarlist.begin(); i != tarlist.end(); i++)
+//       {
+// 	std::cout<<*i<<"\t";
+//       }
+//       
+//       std::cout<<"\n pid  ="<<pid<<"\n";
+//       std::cout<<"\n source  ="<<source<<"\n";
+//       std::cout<<"\n target  ="<<target<<"\n";
+//       std::cout<<"\n size  ="<<size<<"\n";
+//       std::cout<<"\n tag  ="<<tag<<"\n";
+//       std::cout<<"\n communication type  ="<<comm_type<<"\n";
+//       std::cout<<"\n isDestination  ="<<isDestination<<"\n";
+//       std::cout<<"\n self_gid  ="<<self_gid<<"\n";
+//       std::cout<<"\n operation  ="<<operation<<"\n";
+//       std::cout<<"\n Targets tuple  ="<<std::get<0>(targets)<<"\t"<<std::get<1>(targets)<<"\t"<<std::get<2>(targets)<<"\n";
+// 	  
+//     }
+    
     if( (self_gid == locations[0] && onSource) || (self_gid != locations[0] && onMiddle) || (isDestination && onTarget) ) 
-    {
+    {    
+//       if(target == 50)
+//       {
+// 	std::cout<<"self gid ="<<self_gid<<"\n";
+// 	std::cout<<"locations[0] ="<<locations[0]<<"\n";
+// 	std::cout<<"onSource ="<<onSource<<"\n";
+// 	std::cout<<"onMiddle ="<<onMiddle<<"\n";
+// 	std::cout<<"onTarget ="<<onTarget<<"\n";
+//       }
         inputs = mailbox_function(source, target, size, tag);   
         std::tie(outputs, templates) = lookup(operation, inputs);
       
         if(!isDestination)
             templates.push(std::make_shared<communicateTemplate>(pid, source, size, target, tag, tarlist, locations, -1, comm_type, true));
-        else if(comm_type == "blocking"){
+        else if(comm_type == "blocking")
+	{
+	    if(target == 50)
+	      std::cout<<"Destination reached for target ="<<target<<"\n";
             templates.push(std::make_shared<ackTemplate>(pid, rlocations, rlocations[0], true));
         }
 

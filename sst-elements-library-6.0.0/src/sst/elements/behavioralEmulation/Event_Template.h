@@ -25,7 +25,8 @@ template <class Dtype>
 class timeoutTemplate : public eventTemplate {	
 public:
 
-    timeoutTemplate(Dtype v, std::string v_type, bool prov=true) {
+    timeoutTemplate(Dtype v, std::string v_type, bool prov=true) 
+    {
         value = v;    
         provision = prov;
         type = "timeout";
@@ -110,11 +111,12 @@ public:
         call_type = ct;
         type = "call";
         provision = prov;
+	my_name="raja";
     }
     virtual ~callTemplate(){}
 
     int source_gid, source_pid, target_gid;
-    std::string target_family, operation, call_type;
+    std::string target_family, operation, call_type, my_name;
     std::vector<float> inputs;
 
 };

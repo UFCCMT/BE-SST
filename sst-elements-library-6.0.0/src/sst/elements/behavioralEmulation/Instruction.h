@@ -15,10 +15,11 @@ public:
 	std::vector<std::string> operands;
 	int line;
 
-	Instruction(std::string l, std::string k, std::string o){
+	Instruction(std::string l, std::string k, std::string o, int gid_copy)
+	{
 		kind = k;		
 		line = stoi(l);
-		operands = decode(o);	        		
+		operands = decode(o);
 	}	
 
 private:

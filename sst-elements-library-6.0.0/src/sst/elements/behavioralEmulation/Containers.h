@@ -67,7 +67,8 @@ public:
 
     Procrastinator(){}
 
-    Procrastinator(double init){
+    Procrastinator(double init)
+    {
     	init = init;  
         type = "base";   
     }
@@ -76,8 +77,10 @@ public:
 
     std::string type;
 
-    virtual double value(std::map<std::string, double> d, std::vector<float> inp, std::vector<double> out){
-        printf("Inside base procrastinator value\n"); 
+    virtual double value(std::map<std::string, double> d, std::vector<float> inp, std::vector<double> out)
+    {
+       // printf("Inside base procrastinator value\n"); 
+	//std::cout<<"init value ="<<init<<"\n";
     	return init;
     } 
 
@@ -166,7 +169,7 @@ public:
     
     virtual double value(std::map<std::string, double> state, std::vector<float> inp, std::vector<double> out){  
         return out[std::rand() % out.size()];
-/*           
+/*            
         std::random_device random_device; 
 	std::mt19937 engine{random_device()}; 	
         std::uniform_int_distribution<int> dist(0, out.size() - 1);

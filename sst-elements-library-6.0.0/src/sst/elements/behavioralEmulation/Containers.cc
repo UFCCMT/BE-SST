@@ -89,7 +89,7 @@ double Procrastinator::call(std::map<std::string, double> state, std::vector<flo
 
     double rhs;
     double lhs = value(state, inp, out);   
-
+   
     for (auto itr = operations.begin(); itr != operations.end(); ++itr)
     {
         if (std::get<2>(*itr) != NULL)
@@ -99,7 +99,7 @@ double Procrastinator::call(std::map<std::string, double> state, std::vector<flo
 	
 	lhs = std::get<0>(*itr)(lhs, rhs);
     }
-
+   // std::cout<<"LHS = "<<lhs<<"\n";
     return lhs;
 
 }

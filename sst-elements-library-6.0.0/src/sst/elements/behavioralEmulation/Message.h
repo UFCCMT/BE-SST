@@ -38,7 +38,8 @@ public:
                 std::vector<int> empty;
                 std::shared_ptr<simEvent> comm_ev = std::make_shared<commEvent>(eventId, source, size, target, tag, empty, locations, -1, comm_type); 
                 event_queue.push(comm_ev);
-                if(comm_type == "blocking"){
+                if(comm_type == "blocking")
+		{
                     std::shared_ptr<simEvent> wait = std::make_shared<waitEvent>();
                     event_queue.push(wait);
                 }
