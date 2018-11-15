@@ -1,0 +1,3 @@
+FOR ( rk, [0, 1, 2] ) {
+  call(cpu, computeConv, rk)
+}

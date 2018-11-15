@@ -1,0 +1,25 @@
+(000) obtain :: r`00 app.elementsPerProcess
+(001) obtain :: r`01 app.elementSize
+(002) obtain :: r`02 app.alpha
+(003) obtain :: r`03 mpi.commRank
+(004) obtain :: r`04 mpi.commSize
+(005) assign :: r`05 0
+(006) target :: (024)
+(007) assign :: r`06 [1, 2]
+(008) access :: r`07 r`06 r`05
+(009) jumpnq :: r`07 1 (013)
+(010)   call :: cpu update_particles_location r`01 r`00 r`02
+(011)   call :: cpu update_particles_position r`01 r`00 r`02
+(012)   call :: cpu Compute1 r`01 r`00 r`02
+(013) target :: (009)
+(014)   call :: cpu tri_interp_props_part_location r`01 r`00 r`02
+(015)   call :: cpu usr_particles_forces r`01 r`00 r`02
+(016) jumpnq :: r`07 1 (018)
+(017)   call :: cpu upd_vel_and_pos_rk3_stage1 r`01 r`00 r`02
+(018) target :: (016)
+(019)   call :: cpu upd_vel_and_pos_rk3_allstages r`01 r`00 r`02
+(020) jumpnq :: r`07 3 (022)
+(021)   call :: cpu upd_vel_and_pos_rk3_stage3 r`01 r`00 r`02
+(022) target :: (020)
+(023)    inc :: r`05
+(024) jumplt :: r`05 2 (006)

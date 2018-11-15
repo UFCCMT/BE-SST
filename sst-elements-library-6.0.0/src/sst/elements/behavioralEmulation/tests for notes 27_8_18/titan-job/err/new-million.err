@@ -1,0 +1,20 @@
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+[dev1:36066] *** Process received signal ***
+[dev1:36066] Signal: Aborted (6)
+[dev1:36066] Signal code:  (-6)
+[dev1:36066] [ 0] /lib64/libpthread.so.0[0x3cb7c0f7e0]
+[dev1:36066] [ 1] /lib64/libc.so.6(gsignal+0x35)[0x3cb78325e5]
+[dev1:36066] [ 2] /lib64/libc.so.6(abort+0x175)[0x3cb7833dc5]
+[dev1:36066] [ 3] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2b6de15f8b6d]
+[dev1:36066] [ 4] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8cbb6)[0x2b6de15f6bb6]
+[dev1:36066] [ 5] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8cc01)[0x2b6de15f6c01]
+[dev1:36066] [ 6] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8ce18)[0x2b6de15f6e18]
+[dev1:36066] [ 7] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8d31c)[0x2b6de15f731c]
+[dev1:36066] [ 8] sst(_ZNSt6vectorIcSaIcEE17_M_default_appendEm+0x83)[0x45eda3]
+[dev1:36066] [ 9] sst(_ZN3SST5Comms9serializeINS_11ConfigGraphEEESt6vectorIcSaIcEERT_+0x10b)[0x45ef5b]
+[dev1:36066] [10] sst(_ZN3SST5Comms4sendINS_11ConfigGraphEEEviiRT_+0x1a)[0x45ef9a]
+[dev1:36066] [11] sst(main+0x86c)[0x4635fc]
+[dev1:36066] [12] /lib64/libc.so.6(__libc_start_main+0xfd)[0x3cb781ed1d]
+[dev1:36066] [13] sst[0x454239]
+[dev1:36066] *** End of error message ***

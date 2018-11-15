@@ -17,7 +17,7 @@ old_library=''
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' -L/home/raja/Boost_Final//lib -L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpthread -ldl -lutil -lpython2.7 -lboost_program_options -lboost_serialization'
+dependency_libs=' -L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpython2.7 -lpthread -ldl -lutil -lboost_program_options -lboost_serialization'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/raja/sst_element_new/lib/sst-elements-library'
+libdir='/home/tjohnson/local/sstelements-6.0.0/lib/sst-elements-library'

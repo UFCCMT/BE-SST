@@ -1,0 +1,4 @@
+./BE_RUN.sh -c vulcan-proper-symbolic-1024.py  -n 1 -v -N 1
+
+
+./BE_RUN.sh -c vulcan-proper-symbolic-slimfly-1024.py  -n 1 -v -N 1

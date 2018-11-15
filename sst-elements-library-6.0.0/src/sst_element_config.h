@@ -126,7 +126,7 @@
 #define HAVE_LIBZ 1
 
 /* Define this if a modern libltdl is already installed */
-/* #undef HAVE_LTDL */
+#define HAVE_LTDL 1
 
 /* Define to 1 if you have the <mach-o/dyld.h> header file. */
 /* #undef HAVE_MACH_O_DYLD_H */
@@ -228,7 +228,7 @@
 /* #undef LTDL_DLOPEN_DEPLIBS */
 
 /* Define to the system default library search path. */
-#define LT_DLSEARCH_PATH "/lib:/usr/lib:/usr/lib/x86_64-linux-gnu/libfakeroot:/lib/i386-linux-gnu:/usr/lib/i386-linux-gnu:/lib/i686-linux-gnu:/usr/lib/i686-linux-gnu:/usr/lib/i386-linux-gnu/mesa-egl:/usr/lib/i386-linux-gnu/mesa:/usr/local/lib:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu/mesa-egl:/usr/lib/x86_64-linux-gnu/mesa:/lib32:/usr/lib32"
+#define LT_DLSEARCH_PATH "/lib:/usr/lib:/usr/lib/x86_64-linux-gnu/libfakeroot:/usr/local/lib:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu/mesa-egl:/usr/lib/x86_64-linux-gnu/mesa"
 
 /* The archive extension */
 #define LT_LIBEXT "a"

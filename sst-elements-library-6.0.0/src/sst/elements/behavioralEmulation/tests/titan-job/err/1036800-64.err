@@ -1,0 +1,40 @@
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+[c32a-s22:19464] *** Process received signal ***
+[c32a-s22:19464] Signal: Aborted (6)
+[c32a-s22:19464] Signal code:  (-6)
+[c32a-s22:19464] [ 0] /lib64/libpthread.so.0[0x3bb9c0f7e0]
+[c32a-s22:19464] [ 1] /lib64/libc.so.6(gsignal+0x35)[0x3bb98325e5]
+[c32a-s22:19464] [ 2] /lib64/libc.so.6(abort+0x175)[0x3bb9833dc5]
+[c32a-s22:19464] [ 3] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2b58329f9b6d]
+[c32a-s22:19464] [ 4] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8cbb6)[0x2b58329f7bb6]
+[c32a-s22:19464] [ 5] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8cc01)[0x2b58329f7c01]
+[c32a-s22:19464] [ 6] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8ce18)[0x2b58329f7e18]
+[c32a-s22:19464] [ 7] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8d31c)[0x2b58329f831c]
+[c32a-s22:19464] [ 8] sst(_ZNSt6vectorIcSaIcEE17_M_default_appendEm+0x83)[0x45eda3]
+[c32a-s22:19464] [ 9] sst(_ZN3SST5Comms9serializeINS_11ConfigGraphEEESt6vectorIcSaIcEERT_+0x10b)[0x45ef5b]
+[c32a-s22:19464] [10] sst(_ZN3SST5Comms4sendINS_11ConfigGraphEEEviiRT_+0x1a)[0x45ef9a]
+[c32a-s22:19464] [11] sst(main+0x86c)[0x4635fc]
+[c32a-s22:19464] [12] /lib64/libc.so.6(__libc_start_main+0xfd)[0x3bb981ed1d]
+[c32a-s22:19464] [13] sst[0x454239]
+[c32a-s22:19464] *** End of error message ***
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+[c31a-s1:04431] *** Process received signal ***
+[c31a-s1:04431] Signal: Aborted (6)
+[c31a-s1:04431] Signal code:  (-6)
+[c31a-s1:04431] [ 0] /lib64/libpthread.so.0[0x3c4960f7e0]
+[c31a-s1:04431] [ 1] /lib64/libc.so.6(gsignal+0x35)[0x3c492325e5]
+[c31a-s1:04431] [ 2] /lib64/libc.so.6(abort+0x175)[0x3c49233dc5]
+[c31a-s1:04431] [ 3] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2ae91656db6d]
+[c31a-s1:04431] [ 4] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8cbb6)[0x2ae91656bbb6]
+[c31a-s1:04431] [ 5] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8cc01)[0x2ae91656bc01]
+[c31a-s1:04431] [ 6] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8ce18)[0x2ae91656be18]
+[c31a-s1:04431] [ 7] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8d31c)[0x2ae91656c31c]
+[c31a-s1:04431] [ 8] sst(_ZNSt6vectorIcSaIcEE17_M_default_appendEm+0x83)[0x45eda3]
+[c31a-s1:04431] [ 9] sst(_ZN3SST5Comms9serializeINS_11ConfigGraphEEESt6vectorIcSaIcEERT_+0x10b)[0x45ef5b]
+[c31a-s1:04431] [10] sst(_ZN3SST5Comms4sendINS_11ConfigGraphEEEviiRT_+0x1a)[0x45ef9a]
+[c31a-s1:04431] [11] sst(main+0x86c)[0x4635fc]
+[c31a-s1:04431] [12] /lib64/libc.so.6(__libc_start_main+0xfd)[0x3c4921ed1d]
+[c31a-s1:04431] [13] sst[0x454239]
+[c31a-s1:04431] *** End of error message ***

@@ -1,0 +1,27 @@
+#!/bin/bash
+#SBATCH -D /ufrc/lam/saravana8394/sst-elements-library-6.0.0/src/sst/elements/behavioralEmulation/tests
+#SBATCH --job-name=be_sim-es9ec64np262144.job
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-user=saravana8394@ufl.edu
+#SBATCH --account=ccmt
+#SBATCH --qos=ccmt
+#SBATCH --ntasks=64
+#SBATCH --cpus-per-task=1
+#SBATCH --nodes=2
+#SBATCH --mem-per-cpu=2gb
+#SBATCH --ntasks-per-socket=16
+#SBATCH --exclusive
+#SBATCH --distribution=cyclic:block
+#SBATCH --partition=hpg2-compute
+#SBATCH -t 02:40:00
+#SBATCH -o titan-data//bonebe-es9ec64np262144.csv
+#SBATCH -e titan-data//err/be_sim-es9ec64np262144.err
+ 
+module purge
+ml add ufrc
+ml add gcc/5.2.0 python boost/1.59.0 openmpi/1.10.2
+export SST_CORE_HOME=/ufrc/lam/saravana8394/sstcore-6.0.0/mycore
+export SST_ELEMENT_HOME=/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_new
+export PATH=${SST_ELEMENT_HOME}/bin:${SST_CORE_HOME}/bin:$PATH
+ 
+./BE_RUN.sh -c titan-proper-es9ec64np262144.py -n 64

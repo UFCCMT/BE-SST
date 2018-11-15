@@ -1,0 +1,31 @@
+(000) obtain :: r`00 app.elementSize
+(001) obtain :: r`01 app.elementsPerProcess
+(002) obtain :: r`02 app.transferSizeX
+(003) obtain :: r`03 app.transferSizeY
+(004) obtain :: r`04 app.transferSizeZ
+(005) obtain :: r`05 app.timesteps
+(006) obtain :: r`06 app.phyParam
+(007) obtain :: r`07 mpi.commRank
+(008) obtain :: r`08 mpi.commSize
+(009) obtain :: r`09 mpi.cartesianX
+(010) obtain :: r`10 mpi.cartesianY
+(011) obtain :: r`11 mpi.cartesianZ
+(012) obtain :: r`12 mpi.cartesianXplus
+(013) obtain :: r`13 mpi.cartesianHasXplus
+(014) obtain :: r`14 mpi.cartesianXminus
+(015) obtain :: r`15 mpi.cartesianHasXminus
+(016) obtain :: r`16 mpi.cartesianYplus
+(017) obtain :: r`17 mpi.cartesianHasYplus
+(018) obtain :: r`18 mpi.cartesianYminus
+(019) obtain :: r`19 mpi.cartesianHasYminus
+(020) obtain :: r`20 mpi.cartesianZplus
+(021) obtain :: r`21 mpi.cartesianHasZplus
+(022) obtain :: r`22 mpi.cartesianZminus
+(023) obtain :: r`23 mpi.cartesianHasZminus
+(024) assign :: r`24 0
+(025) target :: (030)
+(026) assign :: r`25 [0, 1, 2]
+(027) access :: r`26 r`25 r`24
+(028)   call :: cpu computeConv r`00 r`01
+(029)    inc :: r`24
+(030) jumplt :: r`24 3 (025)

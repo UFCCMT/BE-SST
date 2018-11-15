@@ -80,7 +80,7 @@ public:
     virtual double value(std::map<std::string, double> d, std::vector<float> inp, std::vector<double> out)
     {
        // printf("Inside base procrastinator value\n"); 
-	//std::cout<<"init value ="<<init<<"\n";
+	std::cout<<"init value ="<<init<<"\n";
     	return init;
     } 
 

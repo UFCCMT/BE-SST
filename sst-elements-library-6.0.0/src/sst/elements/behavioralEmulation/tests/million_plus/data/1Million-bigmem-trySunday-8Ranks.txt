@@ -1,0 +1,64 @@
+--------------------------------------------------------------------------
+[[34075,1],6]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: s5a-s23
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+[0:0] SST Core: #main() My rank is (0.0), on 8/1 nodes/threads
+SSTPythonModel Creating config graph for SST using Python model...
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+[1:0] SST Core: #main() My rank is (1.0), on 8/1 nodes/threads
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+[2:0] SST Core: #main() My rank is (2.0), on 8/1 nodes/threads
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+[3:0] SST Core: #main() My rank is (3.0), on 8/1 nodes/threads
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+[4:0] SST Core: #main() My rank is (4.0), on 8/1 nodes/threads
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+[5:0] SST Core: #main() My rank is (5.0), on 8/1 nodes/threads
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+[6:0] SST Core: #main() My rank is (6.0), on 8/1 nodes/threads
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+[7:0] SST Core: #main() My rank is (7.0), on 8/1 nodes/threads
+The number of components are:- 
+1) Cores:  1048576 
+2) Links:  3342336 
+3) Containers:  65536 
+4) assists:  0
+SSTPythonModel Configuration will now parse parameters.
+SSTPythonModel Construction of config graph with Python is complete.
+[0:0] SST Core: # ------------------------------------------------------------
+[0:0] SST Core: # Graph construction took 855.799064 seconds.
+LinearPartition Performing a linear partition scheme for simulation model.
+LinearPartition Expected linear scheme:
+LinearPartition - Component Count:                     4456449
+LinearPartition - Approx. Components per Rank:          557056
+LinearPartition - Remainder (non-balanced dist.):            1
+LinearPartition Linear partition scheme completed.
+[0:0] SST Core: # Graph partitioning took 22.6683 seconds.
+[0:0] SST Core: # Graph construction and partition raised RSS by 23990892 KB
+[0:0] SST Core: # ------------------------------------------------------------
+[0:0] SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+[2:0] SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+[4:0] SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+[7:0] SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+[1:0] SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+[3:0] SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+[5:0] SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+[6:0] SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+[7:0] SST Core: Signal handler registration is completed
+[0:0] SST Core: Signal handler registration is completed
+[1:0] SST Core: Signal handler registration is completed
+[2:0] SST Core: Signal handler registration is completed
+[3:0] SST Core: Signal handler registration is completed
+[5:0] SST Core: Signal handler registration is completed
+[6:0] SST Core: Signal handler registration is completed
+[4:0] SST Core: Signal handler registration is completed
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 30611 on node s5a-s23 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

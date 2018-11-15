@@ -1,0 +1,11 @@
+(000) obtain :: r`00 app.elementsPerProcess
+(001) obtain :: r`01 app.elementSize
+(002) obtain :: r`02 app.alpha
+(003) obtain :: r`03 mpi.commRank
+(004) obtain :: r`04 mpi.commSize
+(005)   call :: cpu update_particles_location r`01 r`00 r`02
+(006)   call :: cpu update_particles_position r`01 r`00 r`02
+(007)   call :: cpu Compute1 r`01 r`00 r`02
+(008)   call :: cpu interp_props_part_location r`01 r`00 r`02
+(009)   call :: cpu usr_particles_forces r`01 r`00 r`02
+(010)   call :: cpu upd_vel_and_pos_bdf r`01 r`00 r`02

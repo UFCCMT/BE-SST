@@ -18,8 +18,6 @@ using namespace SST::BEComponent;
 beComponent::beComponent(ComponentId_t id, Params& params) :
   Component(id) 
 {
-  
-   
    //printf("Inside the SST component constructor \n");
    bool found;
 
@@ -137,6 +135,8 @@ beComponent::beComponent(ComponentId_t id, Params& params) :
     
     /*std::cout<<"ID="<<id<<std::endl;
     
+      if(id==1 || id==0 || id ==8 ||id==2 || id==9)
+      {
 	  std::cout<<std::endl;
 	  std::cout<<std::endl;
 	  std::cout<<"id="<<id<<std::endl;
@@ -162,9 +162,9 @@ beComponent::beComponent(ComponentId_t id, Params& params) :
 	  std::cout<<"containerDimension_list = "<<containerDimension_list<<"\t size is ="<<containerDimension_list.size()<<std::endl;
 	  std::cout<<"program_file = "<<program_file<<"\t size is ="<<program_file.size()<<std::endl;
       
- 
-    */
-   //std::cout<<"Inside C++ program \n";
+    }*/
+    
+   
     componentProcess = std::make_shared<Process>();
     
     
@@ -204,10 +204,11 @@ void beComponent::setup()
     /* Python lookup module setup */
     Py_Initialize();
     PyRun_SimpleString("import sys");
-    PyRun_SimpleString("sys.path.append(\"/home/raja/SST/sst-elements-library-6.0.0/src/sst/elements/behavioralEmulation/tests\")");
+    PyRun_SimpleString("sys.path.append(\"/ufrc/lam/saravana8394/sst-elements-library-6.0.0/src/sst/elements/behavioralEmulation/tests\")");
     PyObject* myModuleString = PyString_FromString((char*)"lookup");
     PyObject* myModule = PyImport_Import(myModuleString);
     PyObject* myFunction = PyObject_GetAttrString(myModule,(char*)"lookupValue");
+    PyObject* myFunction_equation = PyObject_GetAttrString(myModule,(char*)"lookupEquation");
     
     /* Lookup cache setup */
     std::function<void(std::map<std::tuple<std::string, std::vector<float>>, std::vector<double>>)> updateCache = updateGlobalLookupCache;
@@ -217,7 +218,7 @@ void beComponent::setup()
     //if(self_gid > 0) std::cout<<"\n"<<self_gid<<"- Simulation handler build started!\n";
     simulation_handler = std::make_shared<simManager>(self_gid, self_cid, self_ordinal, parent, operations, relations, properties, 
                                                       mailboxes, topology, containerDimension_list, plus_list, minus_list, 
-                                                      children_s, sys_flags, myFunction, updateCache, getCache);
+                                                      children_s, sys_flags, myFunction, myFunction_equation, updateCache, getCache);
 
    //Raja - why this ?
     if((simulation_handler->sim_flags)->debug == self_gid) std::cout<<"GID: "<<self_gid<<" -- Simulation handler build successful!\n";
@@ -240,9 +241,7 @@ void beComponent::setup()
       primaryComponentDoNotEndSim();
 
       std::shared_ptr<Executor> executor = std::make_shared<Executor>(self_gid, simulation_handler->giveExecutorId(), program_file, simulation_handler, simulation_handler->hardware_state);
-  
-      if (self_gid == 9)
-	std::cout<<"Debug value is :"<<simulation_handler->sim_flags->debug<<"\n";
+
       if((simulation_handler->sim_flags)->debug == self_gid) std::cout<<"GID: "<<self_gid<<" -- Simulation handler build successful!\n";
 
       componentProcess->append(executor);
@@ -434,18 +433,6 @@ beCommEvent* beComponent::buildLinkEvent(std::string type, int so, int tar, std:
 {
     beCommEvent* bev = new beCommEvent();
 
-    //std::cout<<"buildLinkEvent -> tarlist \n";
- /*   for(std::vector<int>::iterator i = tlist.begin(); i != tlist.end(); i++)
-    {
-      int start_value = 2+simulation_handler->containerDimensions[0]+simulation_handler->containerDimensions[1]+simulation_handler->containerDimensions[2];
-      int cfl = (*i-1)%(simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]);
-      int br = floor((*i-1)/(simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]));
-      int bds = floor((*i-1)/(simulation_handler->containerDimensions[1]*simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]));
-      int new_target = start_value + cfl + (br*((simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3])+simulation_handler->containerDimensions[2]))+(bds*simulation_handler->containerDimensions[1]);
-      std::cout<<"Old target is ="<<*i<<"\t New target is ="<<new_target<<"\n";    
-    //  *i = new_target;
-    }*/
-     
     bev->type 		= type;
     bev->source 	= so;
     bev->target 	= tar;
@@ -481,7 +468,6 @@ void beComponent::step(std::shared_ptr<Process> process)
 	
 	if (event_type == "timeout")
         {
-	  
             auto ev = std::dynamic_pointer_cast<timeoutEvent>(event);	
             //delay = ev->value*self_clock;
             delay = ev->value;
@@ -664,7 +650,6 @@ void beComponent::step(std::shared_ptr<Process> process)
 
 void beComponent::tick(double eventTime, std::shared_ptr<simEvent> event, std::shared_ptr<Process> eventProcess)
 {
-    //std::cout<<"Inside Tick \n";
 
     if((simulation_handler->sim_flags)->debug == self_gid) std::cout<<"GID: "<<self_gid<<" -- Inside tick for the event " << event->type << std::endl;
 
@@ -672,8 +657,7 @@ void beComponent::tick(double eventTime, std::shared_ptr<simEvent> event, std::s
 
     handleEvents(event, eventProcess); 
 	
-    if (eventProcess->children.empty() && eventProcess->parent != NULL)
-    {
+    if (eventProcess->children.empty() && eventProcess->parent != NULL){
 	step(eventProcess);
     }
 
@@ -717,15 +701,13 @@ void beComponent::linkRecvEvent(Event *ev)
 {
 //    if(self_gid==1)
   //  std::cout<<"Inside linkRecvEvnet \n";
-    //std::cout<<"Every time ? \n";
     beCommEvent *link_event = dynamic_cast<beCommEvent*>(ev);
     
 
     if((simulation_handler->sim_flags)->debug == self_gid) std::cout<<"GID: "<<self_gid<<" -- Event received here for "<<self_kind<<". It is "<<link_event->type<<"\n";
 
     if (link_event)
-    {     
-	//std::cout<<"If link_event \n";
+    {       
 /*
         if(link_event->type == "timeout")
         {
@@ -746,7 +728,6 @@ void beComponent::linkRecvEvent(Event *ev)
 */
         if(link_event->type == "timeout")
         {
-	  	//std::cout<<"If link_event type is timeout\n";
             std::tuple<double, std::shared_ptr<timeoutEvent>, std::shared_ptr<Process>> entry = computeQ.front(); 
 
 	    std::shared_ptr<simEvent> event = std::get<1>(entry);
@@ -783,34 +764,8 @@ void beComponent::linkRecvEvent(Event *ev)
         else if(link_event->type == "communicate")
         {
             
-	  //	std::cout<<"If link_event type is communicate\t";
             std::queue<std::shared_ptr<Process>> routines;
-	   // if(link_event->target == 6)
-	     // std::cout<<"Self ordinal is ="<<self_ordinal<<"\t Target ="<<link_event->target<<"\n";
-
-	    int start_value = 2+simulation_handler->containerDimensions[0]+simulation_handler->containerDimensions[1]+simulation_handler->containerDimensions[2];
-	    int cfl = (self_ordinal-1)%(simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]);
-	    int br = floor((self_ordinal-1)/(simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]));
-	    int bds = floor((self_ordinal-1)/(simulation_handler->containerDimensions[1]*simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]));
-	    int new_target = 1+start_value + cfl + (br*((simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3])+simulation_handler->containerDimensions[2]))+(bds*simulation_handler->containerDimensions[1]);
- 	    if(link_event->target == 30)
-	      std::cout<<"Local ID ="<<self_ordinal<<"\t New Target ="<<new_target<<"\t Actual target ="<<link_event->target<<"\n";
-	   
- 	    bool isDestination = (new_target == link_event->target);
-	   
-            	    
-	    if(link_event->target == 30)
-	      std::cout<<"destination is ="<<isDestination<<"\n";
-
-//	    bool isDestination = (self_ordinal == link_event->target);	    
-	    //std::cout<<"LINK EVENT -> Target"<<link_event->type<<link_event->source<<link_event->target<<link_event->tarlist<<link_event->list<<link_event->comp_id<<link_event->op_param<<link_event->op_id<<link_event->sub_type<<"\n";
-// 	    if(link_event->target == 50)
-// 	    {
-// 	      std::cout<<"Link event list \n";
-// 	      for(std::vector<int>::iterator i = link_event->list.begin(); i != link_event->list.end(); i++)
-// 		std::cout<<*i<<"\t";
-// 	      std::cout<<"\n";
-// 	    }
+            bool isDestination = (self_ordinal == link_event->target);
 
             (link_event->list).push_back(self_gid);
 
@@ -820,56 +775,21 @@ void beComponent::linkRecvEvent(Event *ev)
 
             if (!routines.empty())
             {
-	      if(link_event->target == 30)
-		std::cout<<"Routine not empty"<<"\n";
-
-	      
-//	        if(link_event->target == 6)
-//	      	    if(link_event->target == 50)
-//		  std::cout<<"Routine not empty \n";
                 std::shared_ptr<simEvent> routine_event = std::make_shared<subprocessEvent>(routines);
-               // std::cout<<"Inside routine check before tick \n";
-		tick(link_event->eventTime, routine_event, componentProcess);
-		//std::cout<<"Inside routine check after Tick \n";
-		if (isDestination)
-                {
-		  int next_hop = -1;
-		    if(link_event->target == 30)
-		      std::cout<<"I have reached\n";
-                    if(link_event->sub_type == "blocking") {
-                        next_hop = link_event->list[(link_event->list).size() - 2];  // last element is the destination. So, send event to the one before that
-
-                        beCommEvent *bev;
-                        bev = buildLinkEvent("acknowledge", -1, -1, link_event->tarlist, link_event->list, 
-                                             link_event->comp_id, "", "", "");
-
-                        if(next_hop == self_gid) selfEventLink->send(bev);  
-                        else if(next_hop >= 0) C_Link[next_hop]->send(bev);
-                    }
-
-                }
-
+                tick(link_event->eventTime, routine_event, componentProcess);
             }
 
             else
             {
-	        std::cout<<"Inside communication"<<"\n";
                 int next_hop = -1;
                 int hier_target = (link_event->tarlist).back();
-		//std::cout<<"Tarlist \n";
-		//for(int i=0;i<link_event->tarlist.size();i++)
-		//{
-		  //std::cout<<link_event->tarlist[i]<<"\t";
-		//}
                 int targetOneLevelDown = -1;
 
                 if((link_event->tarlist).size() > 1) targetOneLevelDown = (link_event->tarlist).end()[-2];
-		std::cout<<"isDestination before ->"<<isDestination<<"\n";
+
                 /* If it is destination core - destination component creating acknowledge event if it is a blocking communication */
                 if (isDestination)
                 {
-		    if(link_event->target == 30)
-		      std::cout<<"I have reached\n";
                     if(link_event->sub_type == "blocking") {
                         next_hop = link_event->list[(link_event->list).size() - 2];  // last element is the destination. So, send event to the one before that
 
@@ -902,41 +822,8 @@ void beComponent::linkRecvEvent(Event *ev)
                 /* If it is intermediate core or a container object*/
                 else
                 {
-		    int local_target=0;
-		    //std::cout<<"\n \n I am here for nexthop\n";
-		    //std::cout<<"1-> "<<hier_target<<"--2-->  "<<targetOneLevelDown<<"\n";
-		    /*std::cout<<"Target ="<<hier_target<<"\n";
-		    int start_value = 2+simulation_handler->containerDimensions[0]+simulation_handler->containerDimensions[1]+simulation_handler->containerDimensions[2];
-		    int cfl = (hier_target-1)%(simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]);
-		    int br = floor((hier_target-1)/(simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]));
-		    int bds = floor((hier_target-1)/(simulation_handler->containerDimensions[1]*simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]));
-		    int new_target = start_value + cfl + (br*((simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3])+simulation_handler->containerDimensions[2]))+(bds*simulation_handler->containerDimensions[1]);
-		    std::cout<<"Old target is ="<<hier_target<<"\t New target is ="<<new_target<<"\n";    
-		      //  *i = new_target;*/
-		    int total_size = (simulation_handler->containerDimensions[0]*simulation_handler->containerDimensions[1]*simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]); 
-		    start_value = 2+simulation_handler->containerDimensions[0]+simulation_handler->containerDimensions[1]+simulation_handler->containerDimensions[2];
-		    local_target;
-		   for(int i=0;i<total_size;i++)
-		    {
-		        int t = i+1;
-			int cfl = (t-1)%(simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]);
-			int br = floor((t-1)/(simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]));
-			int bds = floor((t-1)/(simulation_handler->containerDimensions[1]*simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3]));
-			int new_target = start_value + cfl + (br*((simulation_handler->containerDimensions[2]*simulation_handler->containerDimensions[3])+simulation_handler->containerDimensions[2]))+(bds*simulation_handler->containerDimensions[1]);
-			if(new_target == hier_target)
-			{
-			  local_target = i;
-			  break;
-			}
-		    }
-//		    	    if(link_event->target == 50){
-//		    std::cout<<"Target ="<<hier_target<<"\t";
-//		    std::cout<<"BE Component.cc -> local target ="<<local_target<<"\n\n";
-//			    }
-		    std::tuple<bool, int, int> route_set = (simulation_handler->dynamicRouter)->findNextHop(hier_target, targetOneLevelDown,local_target);
-  //                  if(link_event->target == 50)
-//		    std::cout<<"next hop details= 1-> "<<std::get<0>(route_set)<<"  Link ="<<std::get<1>(route_set)<<"  Target ="<<std::get<2>(route_set)<<"\n";
-		    next_hop = std::get<1>(route_set);
+                    std::tuple<bool, int, int> route_set = (simulation_handler->dynamicRouter)->findNextHop(hier_target, targetOneLevelDown);
+                    next_hop = std::get<1>(route_set);
 
                     if(std::get<0>(route_set) == 1) (link_event->tarlist).push_back(std::get<2>(route_set));
 
@@ -1149,10 +1036,8 @@ void beComponent::handleEvents(std::shared_ptr<simEvent> event, std::shared_ptr<
             int targetOneLevelDown = -1;
 
             if((comm_event->tarlist).size() > 1) targetOneLevelDown = (comm_event->tarlist).end()[-2];
-	    
-	    std::cout<<"Before calling findNextHop \n";
 
-            std::tuple<bool, int, int> route_set = (simulation_handler->dynamicRouter)->findNextHop(hier_target, targetOneLevelDown, hier_target);
+            std::tuple<bool, int, int> route_set = (simulation_handler->dynamicRouter)->findNextHop(hier_target, targetOneLevelDown);
 
             next_hop = std::get<1>(route_set);
 

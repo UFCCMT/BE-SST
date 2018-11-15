@@ -1,0 +1,35 @@
+./BE_RUN.sh -c vulcan-proper-symbolic-slimfly-1024.py  -n 1 -v -N 1
+SST-Core: Configuration Library Path will read from: /home/tjohnson/sst/lib/sst:/home/tjohnson/local/sstelements-6.0.0/lib/sst-elements-library
+ SST Core: #main() My rank is (0.0), on 1/1 nodes/threads
+SSTPythonModel Creating config graph for SST using Python model...
+Traceback (most recent call last):
+  File "/home/tjohnson/work/research/sst_folder/sst-elements-library-6.0.0/src/sst/elements/behavioralEmulation/tests/SimulationStarter-vulcan-proper-symbolic-slimfly-1024.py", line 392, in <module>
+    plus_links = link_tuple[0]
+NameError: name 'link_tuple' is not defined
+FATAL: SSTPythonModel Execution of model construction function failed.
+FATAL: SSTPythonModel Execution of model construction function failed.
+SST Fatal Backtrace Information:
+    0 : sst(_ZNK3SST6Output5fatalEjPKcS2_jS2_z+0x40a) [0x4b1f7a]
+    1 : sst(_ZN3SST24SSTPythonModelDefinition17createConfigGraphEv+0x1b3) [0x4f1d03]
+    2 : sst(main+0x2df3) [0x45a8c3]
+    3 : /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf0) [0x7f2c58469830]
+    4 : sst(_start+0x29) [0x462c89]
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD 
+with errorcode -1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+-------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code.. Per user-direction, the job has been aborted.
+-------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[64408,1],0]
+  Exit code:    255
+--------------------------------------------------------------------------

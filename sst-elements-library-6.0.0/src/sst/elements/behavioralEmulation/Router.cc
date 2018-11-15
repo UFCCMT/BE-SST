@@ -1,5 +1,4 @@
 #include "Router.h"
-#include <boost/iterator/iterator_concepts.hpp>
 #include <vector>
 #include <math.h>
 #include <algorithm>
@@ -31,108 +30,16 @@ int DynamicRouter::peerTraversalForMesh(int target)
 
 }
 
-int DynamicRouter::peerTraversalForTree(int Target, int local_target)
-{
-  
-  //std::cout<<"Inside Tree traversal\n";
-  //std::cout<<"Target inside is = "<<Target<<"\n";
-  //std::cout<<"local Target inside is = "<<local_target<<"\n";
-  //std::cout<<"Treeeeeeeeeee\n";
-//   if(Target == 50)
-//   {
-//     std::cout<<"Ordinal = "<<ordinal<<"\t Target inside is = "<<Target<<"\t Local target ="<<local_target<<"\n";
-//     //std::cout<<"Target ="<<Target<<"\n";
-//     std::cout<<"plusNeighbour ="<<"\n";
-// 	for(int ii = 0; ii<plusNeighbour.size(); ii++)
-// 	    std::cout<<plusNeighbour[ii]<<" ";
-// 	std::cout<<"\n";
-//       
-// 	std::cout<<"minusNeighbour =";
-// 	for(int ii = 0; ii<minusNeighbour.size(); ii++)
-// 	  std::cout<<"negative ="<<minusNeighbour[ii]<<" ";
-//       std::cout<<"\n";
-// 	//  std::cout<<"Treeeeeeeeeee\n";
-//   }
-
-     int source = ordinal;
-  int target = Target;
-  
-  if(minusNeighbour.size()==0)
-  {
-    return(plusNeighbour[0]);
-  }
-  else
-  {
-    
-    if(plusNeighbour.size()>0 && plusNeighbour.size()==2)
-    {
-      if(floor(local_target/containerDimensions[3]) == source)
-      {
-	int index = local_target%containerDimensions[3];
-	return(minusNeighbour[(minusNeighbour.size()-1)-index]);
-      }
-      
-      else 			//should go up
-      {
-	if(plusNeighbour[0]<plusNeighbour[1])
-	{
-	  return plusNeighbour[0];
-	}
-	else
-	{
-	  return plusNeighbour[1];
-	}
-      } 
-    }
-    
-    else if(plusNeighbour.size()>2 && plusNeighbour.size()!=1 )
-    {
-      if(ordinal%2==0)
-      {
-	int parent = rand()%(plusNeighbour.size());
-	return (plusNeighbour[parent]);          
-      }
-      else if(ordinal%2==1)
-      {
-	//choose a node
-	int index;
-	int dr_count, rem;
-	dr_count = floor(local_target / (containerDimensions[1]*containerDimensions[2]*containerDimensions[3]));
-	rem = local_target - (dr_count*(containerDimensions[2]*containerDimensions[2]*containerDimensions[3]));
-	index = floor(rem/containerDimensions[3]);
-//	std::cout<<"Node ="<<minusNeighbour[(minusNeighbour.size()-1)-index]<<"\n";
-	return(minusNeighbour[(minusNeighbour.size()-1)-index]);
-      }
-    }
-    
-    else if(plusNeighbour.size() == 1)
-    {
-      //std::cout<<"TOP2\n";
-      int index;
-      index = floor(local_target/(containerDimensions[2]*containerDimensions[3]));
-      if(index%2 ==0)
-	index++;
-  //    std::cout<<"DS ="<<index<<"\n";
-      return(minusNeighbour[(minusNeighbour.size()-1)-index]);
-    }
-    
-  }
-  
-}
-
 int DynamicRouter::peerTraversalForTorus(int target)
 {
-   // std::cout<<"Inside peerTraversalForTorus \n";
     int weightedSource = ordinal;
     int weightedTarget = target;
 
     for(int j = containerDimensions.size()-1; j >= 0; j--)
     {
-     //   std::cout<<"containerDimensions[j] == "<<containerDimensions[j]<<"\n";
         int srcPos = weightedSource % (containerDimensions[j]);
         int tarPos = weightedTarget % (containerDimensions[j]); 
 
-	//std::cout<<"srcPos ="<<srcPos<<"Tarpos ="<<tarPos<<"\n";
         if((srcPos < tarPos) && (tarPos-srcPos < containerDimensions[j]-tarPos+srcPos)) return plusNeighbour[j];
 
         else if(srcPos < tarPos) return minusNeighbour[j];
@@ -155,7 +62,7 @@ std::tuple<int, int, int> DynamicRouter::findNextHopWC(int target, int targetOne
 {
     std::map<int, std::tuple<int, int, int>>::iterator it;
     it = cache.find(target);
-    std::cout<<"Inside FindnextHopWC";
+
     if(it != cache.end())
     {
         return it->second;
@@ -190,67 +97,26 @@ std::tuple<int, int, int> DynamicRouter::findNextHopWC(int target, int targetOne
     return std::make_tuple(0, -1, -1);
 }
 
-std::tuple<int, int, int> DynamicRouter::findNextHop(int target, int targetOneLevelDown, int local_target=0)
+std::tuple<int, int, int> DynamicRouter::findNextHop(int target, int targetOneLevelDown)
 {
-   /* if(target == 6)
-    std::cout<<"Source ="<<ordinal<<"\t";
-   */   // std::cout<<"Inside FindnextHopWC";
-   // std::cout<<"\n Target ="<<target<<"\n";
     std::tuple<int, int, int> nh = std::make_tuple(0, -1, -1);
-    //std::cout<<"\n New communication ordinal ="<<ordinal<<"\n";
-    /*std::cout<<"containerSize ="<<containerSize<<"\n";
-    for(int jj=0;jj<containerDimensions.size();jj++)
-      std::cout<<"containerDimensions ="<<containerDimensions[jj]<<"\n";
-    std::cout<<"targetOneLevelDown ="<<targetOneLevelDown<<"\n";
-    std::cout<<"parent ="<<parent<<"\n";
-    std::cout<<"topology ="<<topology<<"\n";
-    for(int ii = 0; ii<childrenList.size(); ii++)
-          std::cout<<"Childrenlist ="<<childrenList[ii]<<" ";
-    std::cout<<"\n";*/
-    //for(int ii = 0; ii<plusNeighbour.size(); ii++)
-      //  std::cout<<"positive ="<<plusNeighbour[ii]<<" ";
-    //std::cout<<"\n";
-    //for(int ii = 0; ii<minusNeighbour.size(); ii++)
-	//std::cout<<"negative ="<<minusNeighbour[ii]<<" ";
-   // std::cout<<"\n";
-    
-    
-    //std::cout<<"ordinal/containerSize"<<(ordinal/containerSize)<<"\n";
-    /* if true, we need to route the message one level above to the parent container */
-     if (topology == "tree")
-     {
-      nh = std::make_tuple(0, peerTraversalForTree(target,local_target), target);
-     /*if(target == 38)
-       std::cout<<"nh = "<<std::get<0>(nh)<<" "<<std::get<1>(nh)<<" "<<std::get<2>(nh)<<"\n";*/	
-     return nh;
-   }
-   
-    if((ordinal/containerSize) != (target/containerSize)) {
-        std::cout<<"@@@@@@@@@@222\n";
-        nh = std::make_tuple(1, parent, target/containerSize);
-	 // std::cout<<"nh = "<<std::get<0>(nh)<<" "<<std::get<1>(nh)<<" "<<std::get<2>(nh)<<"\n";	
 
+    /* if true, we need to route the message one level above to the parent container */
+    if((ordinal/containerSize) != (target/containerSize)) {
+        nh = std::make_tuple(1, parent, target/containerSize);
         return nh;
     }
 
     /* if true, we need to route the message one level down to the appropriate child object */
     if(target == ordinal) {
-      std::cout<<"************8\n";
         int offset = targetOneLevelDown % childrenList.size();
         nh = std::make_tuple(-1, childrenList[offset], target);
-	  //std::cout<<"nh = "<<std::get<0>(nh)<<" "<<std::get<1>(nh)<<" "<<std::get<2>(nh)<<"\n";	
-
         return nh;
     }
-    
-  
-
 
     if(topology == "mesh") nh = std::make_tuple(0, peerTraversalForMesh(target), target);
 
     else if(topology == "torus") nh = std::make_tuple(0, peerTraversalForTorus(target), target);
-    
-    //std::cout<<"nh = "<<std::get<0>(nh)<<" "<<std::get<1>(nh)<<" "<<std::get<2>(nh)<<"\n";	
 
     return nh;
 }
@@ -393,7 +259,6 @@ void Router::clear(){
 
 void Router::display(std::vector<int> l){
 
-  std::cout<<"display \n";
     for(int i=0; i<l.size(); i++) std::cout<<l[i]<<", ";
     std::cout<<"\n";
 }

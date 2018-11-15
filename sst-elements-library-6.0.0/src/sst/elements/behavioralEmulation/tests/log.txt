@@ -1,0 +1,5 @@
+SST-Core: Configuration Library Path will read from: /home/tjohnson/sst/lib/sst:/home/tjohnson/local/sstelements-6.0.0/lib/sst-elements-library
+ SST Core: #main() My rank is (0.0), on 1/1 nodes/threads
+SSTPythonModel Creating config graph for SST using Python model...
+> /home/tjohnson/work/research/BE-SST_repo/sst-elements-library-6.0.0/src/sst/elements/behavioralEmulation/tests/SimulationStarter-vulcan-proper-symbolic-1024.py(196)TorusNeighbours()
+-> plus_links = [-1]*len(dim)

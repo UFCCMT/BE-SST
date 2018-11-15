@@ -1,0 +1,2158 @@
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+ SST Core: #main() My rank is (0.0), on 1/1 nodes/threads
+SSTPythonModel Creating config graph for SST using Python model...
+The number of components are:- 
+1) Cores:  32 
+2) Links:  160 
+3) Containers:  0 
+4) assists:  0
+SSTPythonModel Configuration will now parse parameters.
+SSTPythonModel Construction of config graph with Python is complete.
+ SST Core: # ------------------------------------------------------------
+ SST Core: # Graph construction took 0.488365 seconds.
+ SST Core: # Graph partitioning took 0.000360012 seconds.
+ SST Core: # Graph construction and partition raised RSS by 5892 KB
+ SST Core: # ------------------------------------------------------------
+ SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+ SST Core: Signal handler registration is completed
+ SST Core: # Starting main event loop
+ SST Core: # Start time: 2018/03/21 at: 15:00:12
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.00263713025903
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+update_particles_position.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0123130072548
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+1.1272069235e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+5.84179840472e-06
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+3.63348576824e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+3.13222999929e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+3.75323270077e-06
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+3.13222999929e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+6.6772246863e-06
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+2.42211765995e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+5.84179840472e-06
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+3.09045868521e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+5.84179840472e-06
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+2.21326108955e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+4.13474153719e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+1.33606349389e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+2.83983080074e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+2.96514474298e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+1.37783480797e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+3.7170283964e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+3.42462919785e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+1.16897823758e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+9.60121667183e-06
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.51265096788e-06
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+4.13474153719e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+2.7145168585e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+2.33857503179e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+4.05119890903e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+2.54743160219e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+2.9233734289e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+2.1297184614e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+8.76579039025e-06
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+3.80057102456e-05
+Compute1.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+1.75377663468e-05
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+interp_props_part_location.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+7.56769276333
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+usr_particles_forces.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0114112328468
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+upd_vel_and_pos_bdf.txt
+inputs
+[15.0, 8.0, 1.0]
+alpha
+1
+lx1
+15.0
+lelt
+8.0
+output value
+0.0200262975931
+
+
+------------------------------------------------------------
+Simulation Timing Information:
+Build time:                      0.504155 seconds
+Simulation time:                 1.328227 seconds
+Total time:                      1.833722 seconds
+Simulated time:                  7.61412 s
+
+Simulation Resource Information:
+Max Resident Set Size:           49.428 MB
+Approx. Global Max RSS Size:     49.428 MB
+Max Local Page Faults:           38 faults
+Global Page Faults:              38 faults
+Max Output Blocks:               259856 blocks
+Max Input Blocks:                0 blocks
+Max mempool usage:               11.137 MB
+Global mempool usage:            11.137 MB
+Global active activities:        1 activities
+Current global TimeVortex depth: 3 entries
+Max TimeVortex depth:            35 entries
+Max Sync data size:              0 B
+Global Sync data size:           0 B
+------------------------------------------------------------
+
+
+Simulation is complete, simulated time: 7.61412 s

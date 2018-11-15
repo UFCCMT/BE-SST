@@ -1,5 +1,4 @@
 #include "Routine.h"
-#include <boost/concept_check.hpp>
 #include <iostream>
 
 using namespace SST;
@@ -68,9 +67,6 @@ std::shared_ptr<simEvent> Routine::run()
 	    {
 
                 auto ev_temp = std::dynamic_pointer_cast<communicateTemplate> (event_template);
-		//std::cout<<"communicate event -> \n";
-		//std::cout<<ev_temp->target;
-		//std::cout<<"End of communicate event \n";
                 event = std::make_shared<commEvent>(ev_temp->pid, ev_temp->source, ev_temp->size, ev_temp->target, ev_temp->tag,  
                                                     ev_temp->tarlist, ev_temp->locations, ev_temp->next_hop, ev_temp->comm_type);
                 event->type = "communicate";      

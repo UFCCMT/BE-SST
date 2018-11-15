@@ -1,0 +1,22 @@
+terminate called after throwing an instance of 'SST::Core::Serialization::pvt::ser_buffer_overrun'
+  what():  std::exception
+[c26a-s1:08950] *** Process received signal ***
+[c26a-s1:08950] Signal: Aborted (6)
+[c26a-s1:08950] Signal code:  (-6)
+[c26a-s1:08950] [ 0] /lib64/libpthread.so.0[0x34a700f7e0]
+[c26a-s1:08950] [ 1] /lib64/libc.so.6(gsignal+0x35)[0x34a6c325e5]
+[c26a-s1:08950] [ 2] /lib64/libc.so.6(abort+0x175)[0x34a6c33dc5]
+[c26a-s1:08950] [ 3] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2b4c9e815b6d]
+[c26a-s1:08950] [ 4] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8cbb6)[0x2b4c9e813bb6]
+[c26a-s1:08950] [ 5] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8cc01)[0x2b4c9e813c01]
+[c26a-s1:08950] [ 6] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8ce18)[0x2b4c9e813e18]
+[c26a-s1:08950] [ 7] sst[0x453f64]
+[c26a-s1:08950] [ 8] sst(_ZN3SST4Core13Serialization3pvt10ser_packer11pack_stringERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x57)[0x4cb637]
+[c26a-s1:08950] [ 9] sst(_ZN3SST15ConfigComponent15serialize_orderERNS_4Core13Serialization10serializerE+0xd25)[0x45e7a5]
+[c26a-s1:08950] [10] sst(_ZN3SST11ConfigGraph15serialize_orderERNS_4Core13Serialization10serializerE+0x586)[0x461c76]
+[c26a-s1:08950] [11] sst(_ZN3SST5Comms9serializeINS_11ConfigGraphEEESt6vectorIcSaIcEERT_+0xd1)[0x45ef21]
+[c26a-s1:08950] [12] sst(_ZN3SST5Comms4sendINS_11ConfigGraphEEEviiRT_+0x1a)[0x45ef9a]
+[c26a-s1:08950] [13] sst(main+0x86c)[0x4635fc]
+[c26a-s1:08950] [14] /lib64/libc.so.6(__libc_start_main+0xfd)[0x34a6c1ed1d]
+[c26a-s1:08950] [15] sst[0x454239]
+[c26a-s1:08950] *** End of error message ***

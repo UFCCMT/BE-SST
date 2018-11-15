@@ -1,0 +1,8 @@
+The number of components are:- 
+1) Cores:  1048576 
+2) Links:  3342336 
+3) Containers:  65536 
+4) assists:  0
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 18522 on node c28a-s2 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

@@ -1,0 +1,30 @@
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+[1:0] SST Core: #main() My rank is (1.0), on 2/1 nodes/threads
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+[0:0] SST Core: #main() My rank is (0.0), on 2/1 nodes/threads
+SSTPythonModel Creating config graph for SST using Python model...
+The number of components are:- 
+1) Cores:  1048576 
+2) Links:  3342336 
+3) Containers:  65536 
+4) assists:  0
+SSTPythonModel Configuration will now parse parameters.
+SSTPythonModel Construction of config graph with Python is complete.
+[0:0] SST Core: # ------------------------------------------------------------
+[0:0] SST Core: # Graph construction took 955.635151 seconds.
+LinearPartition Performing a linear partition scheme for simulation model.
+LinearPartition Expected linear scheme:
+LinearPartition - Component Count:                     4456449
+LinearPartition - Approx. Components per Rank:         2228224
+LinearPartition - Remainder (non-balanced dist.):            1
+LinearPartition Linear partition scheme completed.
+[0:0] SST Core: # Graph partitioning took 22.5446 seconds.
+[0:0] SST Core: # Graph construction and partition raised RSS by 24045544 KB
+[0:0] SST Core: # ------------------------------------------------------------
+[0:0] SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+[0:0] SST Core: Signal handler registration is completed
+[1:0] SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+[1:0] SST Core: Signal handler registration is completed
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 36066 on node dev1 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

@@ -1,0 +1,20 @@
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+[c26a-s42:24882] *** Process received signal ***
+[c26a-s42:24882] Signal: Aborted (6)
+[c26a-s42:24882] Signal code:  (-6)
+[c26a-s42:24882] [ 0] /lib64/libpthread.so.0[0x35e740f7e0]
+[c26a-s42:24882] [ 1] /lib64/libc.so.6(gsignal+0x35)[0x35e70325e5]
+[c26a-s42:24882] [ 2] /lib64/libc.so.6(abort+0x175)[0x35e7033dc5]
+[c26a-s42:24882] [ 3] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2ab3d456bb6d]
+[c26a-s42:24882] [ 4] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8cbb6)[0x2ab3d4569bb6]
+[c26a-s42:24882] [ 5] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8cc01)[0x2ab3d4569c01]
+[c26a-s42:24882] [ 6] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8ce18)[0x2ab3d4569e18]
+[c26a-s42:24882] [ 7] /apps/compilers/gcc/5.2.0/lib64/libstdc++.so.6(+0x8d31c)[0x2ab3d456a31c]
+[c26a-s42:24882] [ 8] sst(_ZNSt6vectorIcSaIcEE17_M_default_appendEm+0x83)[0x45eda3]
+[c26a-s42:24882] [ 9] sst(_ZN3SST5Comms9serializeINS_11ConfigGraphEEESt6vectorIcSaIcEERT_+0x10b)[0x45ef5b]
+[c26a-s42:24882] [10] sst(_ZN3SST5Comms4sendINS_11ConfigGraphEEEviiRT_+0x1a)[0x45ef9a]
+[c26a-s42:24882] [11] sst(main+0x86c)[0x4635fc]
+[c26a-s42:24882] [12] /lib64/libc.so.6(__libc_start_main+0xfd)[0x35e701ed1d]
+[c26a-s42:24882] [13] sst[0x454239]
+[c26a-s42:24882] *** End of error message ***

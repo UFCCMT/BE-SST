@@ -1,0 +1,29 @@
+--------------------------------------------------------------------------
+[[6272,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: i1a-s11
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+SST-Core: Configuration Library Path will read from: /ufrc/lam/saravana8394/sstcore-6.0.0/mycore/lib/sst:/ufrc/lam/saravana8394/sst-elements-library-6.0.0/sst_element_core_new/lib/sst-elements-library
+ SST Core: #main() My rank is (0.0), on 1/1 nodes/threads
+SSTPythonModel Creating config graph for SST using Python model...
+The number of components are:- 
+1) Cores:  1048576 
+2) Links:  3342336 
+3) Containers:  65536 
+4) assists:  0
+SSTPythonModel Configuration will now parse parameters.
+SSTPythonModel Construction of config graph with Python is complete.
+ SST Core: # ------------------------------------------------------------
+ SST Core: # Graph construction took 657.351858 seconds.
+ SST Core: # Graph partitioning took 16.2007 seconds.
+ SST Core: # Graph construction and partition raised RSS by 23990260 KB
+ SST Core: # ------------------------------------------------------------
+ SST Core: Signal handers will be registed for USR1, USR2, INT and TERM...
+ SST Core: Signal handler registration is completed
+ SST Core: # Starting main event loop
+ SST Core: # Start time: 2017/10/15 at: 09:49:59
